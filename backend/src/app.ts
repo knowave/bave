@@ -13,7 +13,7 @@ export default class App {
 
   public listen() {
     this.app.listen(this.port, () => {
-      console.log(`🎉 Connected Server ${this.port}`);
+      console.log(`🎉 Connected Server http://localhost:${this.port}`);
     });
   }
 }
