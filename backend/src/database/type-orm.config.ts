@@ -5,12 +5,14 @@ export const connectionOptions = new DataSource({
   type: 'mysql',
   host: process.env.DB_HOST,
   port: Number(process.env.DB_PORT),
-  username: process.env.DB_USERNAME,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
+  username: 'root',
+  password: 'root',
+  database: 'bave',
   synchronize: true,
   logging: true,
   entities: [User],
 });
+
+console.log(process.env.DB_USERNAME);
 
 export default connectionOptions;

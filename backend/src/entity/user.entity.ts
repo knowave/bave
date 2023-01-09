@@ -3,40 +3,40 @@ import { BaseEntity } from '../base/base.entity';
 
 @Entity('oath_user', { schema: 'public' })
 export class User extends BaseEntity {
-  @PrimaryColumn('character varying', {
+  @PrimaryColumn('varchar', {
     name: 'user_id',
     comment: '회원 아이디',
     unique: true,
   })
   userId: string | undefined;
 
-  @Column('character varying', {
+  @Column('varchar', {
     name: 'password',
     comment: '패스워드',
     nullable: true,
     select: false,
   })
   password?: string;
-  @Column('character varying', {
+  @Column('varchar', {
     name: 'jwt_token',
     comment: 'jwt refresh token',
     nullable: true,
     select: false,
   })
   jwtToken?: string;
-  @Column('character varying', {
+  @Column('varchar', {
     name: 'username',
     comment: '관리자 이름',
     nullable: true,
   })
   username?: string;
-  @Column('character varying', {
+  @Column('varchar', {
     name: 'team',
     comment: '소속',
     nullable: true,
   })
   team?: string;
-  @Column('character varying', {
+  @Column('varchar', {
     name: 'role_name',
     comment: '역할',
     nullable: false,
@@ -44,7 +44,7 @@ export class User extends BaseEntity {
   })
   roleName?: string;
 
-  @Column('timestamp without time zone', {
+  @Column('timestamp', {
     name: 'last_access_at',
     comment: '최근 접속일',
     nullable: true,
