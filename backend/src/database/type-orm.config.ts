@@ -1,6 +1,7 @@
 import { ConnectionOptions } from 'typeorm';
+import { User } from '../entity/user.entity';
 
-const connectionOptions: ConnectionOptions = {
+export const connectionOptions: ConnectionOptions = {
   type: 'mysql',
   host: process.env.DB_HOST,
   port: Number(process.env.DB_PORT),
@@ -9,7 +10,7 @@ const connectionOptions: ConnectionOptions = {
   database: process.env.DB_NAME,
   synchronize: true,
   logging: true,
-  entities: ['../entities/**/*.*'],
+  entities: [User],
 };
 
 export default connectionOptions;
