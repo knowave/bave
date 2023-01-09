@@ -6,11 +6,13 @@ import swaggerUi from 'swagger-ui-express';
 export default class App {
   public app: express.Application;
   public env: DotenvConfigOutput;
-  public port: any;
+  public port: number;
   constructor() {
     this.app = express();
+    this.app.use(express.json());
+    this.app.use(express.urlencoded({ extended: false }));
     this.env = dotenv.config();
-    this.port = process.env.PORT;
+    this.port = Number(process.env.PORT);
   }
 
   public swagger() {
