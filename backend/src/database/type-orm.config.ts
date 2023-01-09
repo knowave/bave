@@ -13,6 +13,4 @@ export const connectionOptions = new DataSource({
   entities: [User],
 });
 
-console.log(process.env.DB_USERNAME);
-
 export default connectionOptions;
