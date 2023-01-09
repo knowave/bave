@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv, { DotenvConfigOutput } from 'dotenv';
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
+import { createConnection } from 'typeorm';
 
 export default class App {
   public app: express.Application;
@@ -34,6 +35,16 @@ export default class App {
     const spec = swaggerJsdoc(option);
 
     this.app.use('/bave-api', swaggerUi.serve, swaggerUi.setup(spec));
+  }
+
+  public async connectionDB(): Promise<void> {
+    createConnection()
+      .then((connection) => {
+        console.log('Connected to the DataBase Successfully');
+      })
+      .catch((error) => {
+        console.log(`Error : ${error}`);
+      });
   }
 
   public listen() {
