@@ -2,7 +2,7 @@ import express from 'express';
 import dotenv, { DotenvConfigOutput } from 'dotenv';
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
-import { createConnection } from 'typeorm';
+import connectionOptions from './database/type-orm.config';
 
 export default class App {
   public app: express.Application;
@@ -38,12 +38,13 @@ export default class App {
   }
 
   public async connectionDB(): Promise<void> {
-    createConnection()
-      .then((connection) => {
-        console.log('Connected to the DataBase Successfully');
+    connectionOptions
+      .initialize()
+      .then(() => {
+        console.log('Connection Mysql Database');
       })
       .catch((error) => {
-        console.log(`Error : ${error}`);
+        console.log(`ERROR❗❗️️ ${error}️`);
       });
   }
 
