@@ -3,6 +3,7 @@ import { BaseEntity } from '../base/base.entity';
 import { Like } from './like.entity';
 import * as bcrypt from 'bcrypt';
 import { Reply } from './reply.entity';
+import { Feed } from './feed.entity';
 
 @Entity('users')
 export class User extends BaseEntity {
@@ -43,6 +44,9 @@ export class User extends BaseEntity {
   @OneToMany(() => Reply, (reply) => reply.user)
   @JoinColumn({ name: 'reply_id', referencedColumnName: 'replyId' })
   replyList?: Reply[];
+
+  @OneToMany(() => Feed, (feed) => feed.user)
+  feedList?: Feed[];
 
   async hashPassword(password: string): Promise<void> {
     this.password = await bcrypt.hash(password, 12);

@@ -1,5 +1,6 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToMany, PrimaryColumn } from 'typeorm';
 import { BaseEntity } from '../base/base.entity';
+import { Feed } from './feed.entity';
 
 @Entity('beach')
 export class Beach extends BaseEntity {
@@ -43,4 +44,8 @@ export class Beach extends BaseEntity {
     nullable: false,
   })
   longitude?: string;
+
+  @OneToMany(() => Feed, (feed) => feed.beach)
+  @JoinColumn({ name: 'feed_id', referencedColumnName: 'feedId' })
+  feedList?: Feed[];
 }
