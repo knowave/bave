@@ -1,6 +1,7 @@
 import { BeforeUpdate, Column, Entity, JoinColumn, OneToMany, PrimaryColumn } from 'typeorm';
 import { BaseEntity } from '../base/base.entity';
 import { Like } from './like.entity';
+import * as bcrypt from 'bcrypt';
 
 @Entity('users')
 export class User extends BaseEntity {
@@ -37,6 +38,10 @@ export class User extends BaseEntity {
   @OneToMany(() => Like, (like) => like.user)
   @JoinColumn({ name: 'like_id', referencedColumnName: 'like_id' })
   likeList?: Like[];
+
+  async hashPassword(password: string): Promise<void> {
+    this.password = await bcrypt.hash(password, 12);
+  }
 
   @BeforeUpdate()
   async updateDate(): Promise<void> {
