@@ -1,7 +1,8 @@
-import { BeforeUpdate, Column, Entity, PrimaryColumn } from 'typeorm';
+import { BeforeUpdate, Column, Entity, JoinColumn, OneToMany, PrimaryColumn } from 'typeorm';
 import { BaseEntity } from '../base/base.entity';
+import { Like } from './like.entity';
 
-@Entity('users', { schema: 'public' })
+@Entity('users')
 export class User extends BaseEntity {
   @PrimaryColumn('varchar', {
     name: 'user_id',
@@ -33,12 +34,12 @@ export class User extends BaseEntity {
   })
   jwtToken?: string;
 
+  @OneToMany(() => Like, (like) => like.user)
+  @JoinColumn({ name: 'like_id', referencedColumnName: 'like_id' })
+  likeList?: Like[];
+
   @BeforeUpdate()
   async updateDate(): Promise<void> {
     this.updatedAt = await new Date();
   }
-  //
-  // async comparePw(attempt: string): Promise<boolean> {
-  //   return await bcrypt.compare(attempt, this.password);
-  // }
 }
