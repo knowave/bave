@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import { dataSourceConfig } from './database/data-source.config';
+import { router } from './router/beach.router';
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ dataSourceConfig
 
 
 app.use(express.json());
+app.use('/beach', router);
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
