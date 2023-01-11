@@ -1,6 +1,6 @@
 import BeachService from '../service/beach.service';
-import { RequestHandler } from 'express';
-import { Beach } from '../entity/beach.entity';
+import { Request, RequestHandler, Response } from 'express';
+import { STATUS_CODE } from '../exception/status-code';
 
 export default class BeachController {
   private beachService: BeachService;
@@ -9,8 +9,14 @@ export default class BeachController {
     this.beachService = beachService;
   }
 
-  public getAllBeach: RequestHandler = async (): Promise<Beach[]> => {
-    const beaches = await this.beachService.getAllBeach();
-    return beaches;
+  public getAllBeach: RequestHandler = async (req: Request, res: Response) => {
+    const query = req.query;
+    try {
+      const data = await this.beachService.getAllBeach(query);
+      return res.status(STATUS_CODE.SUCCESS.OK).json(data);
+    } catch (error) {
+      console.error('getAllBeach Error : ', error);
+      return res.status(STATUS_CODE.ERROR.BAD_REQUEST).send(error);
+    }
   };
 }
