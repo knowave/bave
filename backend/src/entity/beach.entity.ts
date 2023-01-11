@@ -1,10 +1,10 @@
-import { Column, Entity, JoinColumn, OneToMany, PrimaryColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { BaseEntity } from '../base/base.entity';
 import { Feed } from './feed.entity';
 
 @Entity('beach')
 export class Beach extends BaseEntity {
-  @PrimaryColumn('integer', {
+  @PrimaryGeneratedColumn({
     name: 'beach_id',
     comment: '해수욕장 ID',
   })
