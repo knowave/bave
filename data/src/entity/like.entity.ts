@@ -1,11 +1,11 @@
-import { Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
+import { Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { BaseEntity } from '../base/base.entity';
 import { User } from './user.entity';
 import { Feed } from './feed.entity';
 
 @Entity('like')
 export class Like extends BaseEntity {
-  @PrimaryColumn('integer', {
+  @PrimaryGeneratedColumn({
     name: 'like_id',
     comment: '좋아요 ID',
   })

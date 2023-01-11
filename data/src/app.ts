@@ -19,6 +19,7 @@ dataSourceConfig
 
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use('/beach', router);
 
 app.listen(port, () => {

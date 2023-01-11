@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { BaseEntity } from '../base/base.entity';
 import { User } from './user.entity';
 import { Reply } from './reply.entity';
@@ -7,7 +7,7 @@ import { Beach } from './beach.entity';
 
 @Entity()
 export class Feed extends BaseEntity {
-  @PrimaryColumn('integer', {
+  @PrimaryGeneratedColumn({
     name: 'feed_id',
     comment: '피드 ID',
   })

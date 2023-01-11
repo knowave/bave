@@ -1,11 +1,11 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { BaseEntity } from '../base/base.entity';
 import { User } from './user.entity';
 import { Feed } from './feed.entity';
 
 @Entity()
 export class Reply extends BaseEntity {
-  @PrimaryColumn('integer', {
+  @PrimaryGeneratedColumn({
     name: 'reply_id',
     comment: '댓글 ID',
   })
