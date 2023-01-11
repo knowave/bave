@@ -1,10 +1,21 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import { dataSourceConfig } from './database/data-source.config';
 
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT
+
+dataSourceConfig
+  .initialize()
+  .then(() => {
+    console.log('Data Source has been been initialized!');
+  })
+  .catch(error => {
+    console.error("Error during Data Source initialization:", error);
+  });
+
 
 app.use(express.json());
 
