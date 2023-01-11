@@ -31,7 +31,7 @@ export default class App {
 
     const option = {
       swaggerDefinition: swaggerDefinition,
-      apis: [__dirname + '/../controller/*.ts'],
+      apis: ['./routes/*.ts'],
     };
 
     const spec = swaggerJsdoc(option);
