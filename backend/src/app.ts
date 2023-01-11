@@ -3,6 +3,7 @@ import dotenv, { DotenvConfigOutput } from 'dotenv';
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import connectionOptions from './database/type-orm.config';
+import Routes from './routes/index';
 
 export default class App {
   public app: express.Application;
@@ -12,6 +13,7 @@ export default class App {
     this.app = express();
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: false }));
+    this.app.use('/api', Routes);
     this.env = dotenv.config();
     this.port = Number(process.env.PORT);
   }
@@ -46,6 +48,10 @@ export default class App {
       .catch((error) => {
         console.log(`ERROR❗❗️️ ${error}️`);
       });
+  }
+
+  public apiRouter() {
+    this.app.use;
   }
 
   public listen() {
