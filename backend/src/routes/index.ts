@@ -1,17 +1,15 @@
-import { Request, Response } from 'express';
+import { Router } from 'express';
+import BeachRouter from './beach.router';
 
 class Routes {
-  private controller: any;
-
+  private router;
   constructor() {
-    this.controller = '';
+    this.router = Router() as Router;
   }
-
-  public routes(app: any): void {
-    app.route('/').get((req: Request, res: Response) => {
-      res.status(200).send({
-        message: 'GET Request successfully.',
-      });
-    });
+  public routes(): Router {
+    this.router.use('/beach', BeachRouter);
+    return this.router;
   }
 }
+
+export default new Routes().routes();
