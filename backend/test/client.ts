@@ -1,7 +1,6 @@
 import dotenv from 'dotenv';
 import request from 'supertest';
 import express from 'express';
-import faker from 'faker';
 
 dotenv.config();
 
@@ -18,7 +17,7 @@ export default class Client {
     return client;
   }
 
-  async signUp(userId: string = faker.internet.userName(), data?: string) {
+  async signUp(userId = '', data?: string) {
     const signUpUrl = `${host}/sign-up`;
 
     let response = await request(this.app).get(`${signUpUrl}`);
