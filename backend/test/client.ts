@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 import request from 'supertest';
 import express from 'express';
+import faker from 'faker';
 
 dotenv.config();
 
@@ -17,7 +18,7 @@ export default class Client {
     return client;
   }
 
-  async signUp(userId: string, data?: string) {
+  async signUp(userId: string = faker.internet.userName(), data?: string) {
     const signUpUrl = `${host}/sign-up`;
 
     let response = await request(this.app).get(`${signUpUrl}`);
@@ -29,6 +30,14 @@ export default class Client {
     this.userId = userId;
     this.jwt.accessToken = accessToken;
     this.jwt.refreshToken = refreshToken;
+
+    return response;
+  }
+
+  async getAllBeach() {
+    const beachListUrl = `${host}/beach`;
+
+    const response = await request(this.app).get(`${beachListUrl}`);
 
     return response;
   }
