@@ -38,6 +38,54 @@ export default class Client {
   }
 
   /**
+   * 토큰 재발급
+   */
+  async refreshToken() {
+    const refreshTokenUrl = `${host}/auth/refresh-token`;
+
+    const response = await request(this.app)
+      .post(`${refreshTokenUrl}`)
+      .send({ refreshToken: `${this.jwt.refreshToken}` })
+      .set('Authorization', `Bearer${this.jwt.accessToken}`);
+
+    const { accessToken } = response.body;
+    this.jwt.accessToken = accessToken;
+
+    return response;
+  }
+
+  /**
+   * 내 정보 조회
+   */
+  async myInfo() {
+    const myInfoUrl = `${host}/users/me`;
+
+    const response = await request(this.app).get(`${myInfoUrl}`).set('Authorization', `Bearer${this.jwt.accessToken}`);
+
+    const { accessToken } = response.body;
+    this.jwt.accessToken = accessToken;
+
+    return response;
+  }
+
+  /**
+   * 내 정보 수정
+   */
+  async changeMyInfo(changeData?: string) {
+    const updateMyInfo = `${host}/users/change`;
+    changeData = 'updateUser';
+
+    const response = await request(this.app)
+      .patch(`${updateMyInfo}`)
+      .send({
+        data: changeData,
+      })
+      .set('Authorization', `Bearer${this.jwt.accessToken}`);
+
+    return response;
+  }
+
+  /**
    * 해수욕장 전체 조회
    */
   async getAllBeach() {
