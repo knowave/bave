@@ -43,7 +43,7 @@ describe('User 관련 API 테스트', function () {
       await client.signUp(userId);
 
       const changeData = 'change-name';
-      const response = await client.myInfo(changeData);
+      const response = await client.changeMyInfo(changeData);
 
       assert.equal(response.body.data, changeData);
     });
