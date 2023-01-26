@@ -15,6 +15,7 @@ class BeachRouter {
 
   beachMainRouter(): Router {
     this.beachRouter.get('/', this.beachController.getAllBeach);
+    this.beachRouter.get('/:beachId', this.beachController.findOneBeach);
     return this.beachRouter;
   }
 }

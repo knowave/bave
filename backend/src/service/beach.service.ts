@@ -16,14 +16,30 @@ export default class BeachService {
     this.serviceKey = String(process.env.SERVICE_KEY);
   }
 
+  /**
+   * 해수욕장 전체 조회
+   */
   public async getAllBeach(query: any): Promise<Beach[]> {
     const limit = query.itemPerPage ?? 20;
     const page = query.page ?? 1;
     const skip = limit * (page - 1) ?? 0;
     const beaches = await this.beachRepository.createQueryBuilder('beach').limit(limit).skip(skip).orderBy('beach.beachId', query.sort).getMany();
     if (beaches.length === 0) {
-      throw BEACH_EXCEPTION.BEACH_CODE_EXPIRED;
+      throw BEACH_EXCEPTION.ALL_BEACH_CODE_EXPIRED;
     }
     return beaches;
+  }
+
+  /**
+   * 특정 해수욕장 조회
+   */
+  public async findOneByBeach(beachId: number): Promise<Beach | null> {
+    const beach = await this.beachRepository.findOne({ where: { beachId } });
+
+    if (!beach) {
+      throw BEACH_EXCEPTION.ONE_BEACH_CODE_EXPIRED;
+    }
+
+    return beach;
   }
 }
