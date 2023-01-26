@@ -11,7 +11,15 @@ export class User extends BaseEntity {
     name: 'user_id',
     comment: '회원 아이디',
   })
-  userId?: string;
+  userId?: number;
+
+  @Column({
+    name: 'email',
+    comment: '회원 이메일',
+    nullable: true,
+    unique: true,
+  })
+  email?: string;
 
   @Column('varchar', {
     name: 'password',
