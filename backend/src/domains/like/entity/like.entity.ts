@@ -1,7 +1,7 @@
 import { Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { BaseEntity } from '../base/base.entity';
-import { User } from './user.entity';
-import { Feed } from './feed.entity';
+import { BaseEntity } from '../../../base/base.entity';
+import { User } from '../../user/entity/user.entity';
+import { Feed } from '../../feed/entity/feed.entity';
 
 @Entity('like')
 export class Like extends BaseEntity {

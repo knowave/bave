@@ -2,7 +2,7 @@ import passport from 'passport';
 import { Strategy as KakaoStrategy } from 'passport-kakao';
 import dotenv from 'dotenv';
 import { connectionOptions } from '../database/type-orm.config';
-import { User } from '../entity/user.entity';
+import { User } from '../domains/user/entity/user.entity';
 
 dotenv.config();
 

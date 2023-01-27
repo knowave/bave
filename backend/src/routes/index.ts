@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import BeachRouter from './beach.router';
+import BeachRouter from '../domains/beach/router/beach.router';
 
 class Routes {
   private router;

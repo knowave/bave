@@ -1,6 +1,6 @@
 import { Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { BaseEntity } from '../base/base.entity';
-import { Feed } from './feed.entity';
+import { BaseEntity } from '../../../base/base.entity';
+import { Feed } from '../../feed/entity/feed.entity';
 
 @Entity('beach')
 export class Beach extends BaseEntity {

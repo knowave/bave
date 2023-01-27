@@ -1,11 +1,11 @@
-import BeachService from '../service/beach.service';
+import BeachRepository from '../repository/beach.repository';
 import { Request, RequestHandler, Response } from 'express';
-import { STATUS_CODE } from '../exception/status-code';
+import { STATUS_CODE } from '../../../exception/status-code';
 
 export default class BeachController {
-  private beachService: BeachService;
+  private beachService: BeachRepository;
 
-  constructor(beachService: BeachService) {
+  constructor(beachService: BeachRepository) {
     this.beachService = beachService;
   }
 

@@ -1,10 +1,10 @@
 import { Repository } from 'typeorm';
 import { Beach } from '../entity/beach.entity';
-import connectionOptions from '../database/type-orm.config';
+import connectionOptions from '../../../database/type-orm.config';
 import dotenv from 'dotenv';
-import { BEACH_EXCEPTION } from '../exception/error-code';
+import { BEACH_EXCEPTION } from '../../../exception/error-code';
 
-export default class BeachService {
+export default class BeachRepository {
   private beachRepository: Repository<Beach>;
   private env: dotenv.DotenvConfigOutput;
   private serviceUrl: string;

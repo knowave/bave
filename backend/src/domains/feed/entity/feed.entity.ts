@@ -1,9 +1,9 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { BaseEntity } from '../base/base.entity';
-import { User } from './user.entity';
-import { Reply } from './reply.entity';
-import { Like } from './like.entity';
-import { Beach } from './beach.entity';
+import { BaseEntity } from '../../../base/base.entity';
+import { User } from '../../user/entity/user.entity';
+import { Reply } from '../../reply/entity/reply.entity';
+import { Like } from '../../like/entity/like.entity';
+import { Beach } from '../../beach/entity/beach.entity';
 
 @Entity()
 export class Feed extends BaseEntity {

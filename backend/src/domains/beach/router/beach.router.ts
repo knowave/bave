@@ -1,15 +1,15 @@
 import { Router } from 'express';
-import BeachService from '../service/beach.service';
+import BeachRepository from '../repository/beach.repository';
 import BeachController from '../controller/beach.controller';
 
 class BeachRouter {
-  public beachService: BeachService;
+  public beachService: BeachRepository;
   public beachController: BeachController;
   private beachRouter: Router;
 
   constructor() {
     this.beachRouter = Router() as Router;
-    this.beachService = new BeachService();
+    this.beachService = new BeachRepository();
     this.beachController = new BeachController(this.beachService);
   }
 
