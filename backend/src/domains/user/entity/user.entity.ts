@@ -1,9 +1,9 @@
 import { BeforeUpdate, Column, Entity, JoinColumn, OneToMany, PrimaryColumn } from 'typeorm';
-import { BaseEntity } from '../base/base.entity';
-import { Like } from './like.entity';
+import { BaseEntity } from '../../../base/base.entity';
+import { Like } from '../../like/entity/like.entity';
 import * as bcrypt from 'bcrypt';
-import { Reply } from './reply.entity';
-import { Feed } from './feed.entity';
+import { Reply } from '../../reply/entity/reply.entity';
+import { Feed } from '../../feed/entity/feed.entity';
 
 @Entity('users')
 export class User extends BaseEntity {
