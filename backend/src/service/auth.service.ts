@@ -16,7 +16,7 @@ export default class AuthService {
   /**
    * 회원 가입
    */
-  public async findOrCreate(userId: number, email: string, username: string): Promise<User> {
+  public async findOrCreate(userId: string, email: string, username: string): Promise<User> {
     const existUser = await this.userRepository.findOne({ where: { userId } });
 
     if (existUser) {
