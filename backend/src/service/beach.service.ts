@@ -25,7 +25,7 @@ export default class BeachService {
     const skip = limit * (page - 1) ?? 0;
     const beaches = await this.beachRepository.createQueryBuilder('beach').limit(limit).skip(skip).orderBy('beach.beachId', query.sort).getMany();
     if (beaches.length === 0) {
-      throw BEACH_EXCEPTION.ALL_BEACH_CODE_EXPIRED;
+      throw BEACH_EXCEPTION.NOT_FOUND_BEACHES;
     }
     return beaches;
   }
@@ -37,7 +37,7 @@ export default class BeachService {
     const beach = await this.beachRepository.findOne({ where: { beachId } });
 
     if (!beach) {
-      throw BEACH_EXCEPTION.ONE_BEACH_CODE_EXPIRED;
+      throw BEACH_EXCEPTION.NOT_FOUND_BEACH;
     }
 
     return beach;

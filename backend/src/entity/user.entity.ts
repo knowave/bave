@@ -13,7 +13,7 @@ export class User extends BaseEntity {
   })
   userId?: number;
 
-  @Column({
+  @Column('varchar', {
     name: 'email',
     comment: '회원 이메일',
     nullable: true,
