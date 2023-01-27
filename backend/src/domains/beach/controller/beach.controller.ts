@@ -1,13 +1,9 @@
-import BeachRepository from '../repository/beach.repository';
 import { Request, RequestHandler, Response } from 'express';
 import { STATUS_CODE } from '../../../exception/status-code';
+import { BeachService } from '../service/beach.service';
 
 export default class BeachController {
-  private beachService: BeachRepository;
-
-  constructor(beachService: BeachRepository) {
-    this.beachService = beachService;
-  }
+  constructor(private beachService: BeachService) {}
 
   /**
    * 해수욕장 전체 조회

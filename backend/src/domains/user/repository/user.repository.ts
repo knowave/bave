@@ -2,13 +2,13 @@ import { DataSource, Repository } from 'typeorm';
 import { User } from '../entity/user.entity';
 import { USER_EXCEPTION } from '../../../exception/error-code';
 
-export default class UserRepository extends Repository<User> {
+export class UserRepository extends Repository<User> {
   constructor(private readonly dataSource: DataSource) {
     super(User, dataSource.createEntityManager());
   }
 
   /**
-   * 회원 가입
+   * 유저 생성
    */
   public async findOrCreate(userId: string, email: string, username: string): Promise<User> {
     const existUser = await this.findOne({ where: { userId } });
