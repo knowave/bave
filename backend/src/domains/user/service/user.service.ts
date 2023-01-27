@@ -1,8 +1,11 @@
-import { UserRepository } from '../repository/user.repository';
+import UserRepository from '../repository/user.repository';
 import { User } from '../entity/user.entity';
 
 export default class UserService {
-  constructor(private userRepository: UserRepository) {}
+  private userRepository: UserRepository;
+  constructor() {
+    this.userRepository = new UserRepository();
+  }
 
   /**
    * 유저 생성
