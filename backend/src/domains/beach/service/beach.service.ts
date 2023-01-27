@@ -1,8 +1,11 @@
-import { BeachRepository } from '../repository/beach.repository';
+import BeachRepository from '../repository/beach.repository';
 import { Beach } from '../entity/beach.entity';
 
-export class BeachService {
-  constructor(private beachRepository: BeachRepository) {}
+export default class BeachService {
+  private beachRepository: BeachRepository;
+  constructor() {
+    this.beachRepository = new BeachRepository();
+  }
 
   /**
    * 해수욕장 전체 조회

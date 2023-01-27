@@ -1,7 +1,7 @@
 import { UserRepository } from '../repository/user.repository';
 import { User } from '../entity/user.entity';
 
-export class UserService {
+export default class UserService {
   constructor(private userRepository: UserRepository) {}
 
   /**

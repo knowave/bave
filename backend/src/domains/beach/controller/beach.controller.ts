@@ -1,6 +1,6 @@
 import { Request, RequestHandler, Response } from 'express';
 import { STATUS_CODE } from '../../../exception/status-code';
-import { BeachService } from '../service/beach.service';
+import BeachService from '../service/beach.service';
 
 export default class BeachController {
   constructor(private beachService: BeachService) {}
