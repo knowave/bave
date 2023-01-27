@@ -1,4 +1,4 @@
-import { BeforeUpdate, Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { BeforeUpdate, Column, Entity, JoinColumn, OneToMany, PrimaryColumn } from 'typeorm';
 import { BaseEntity } from '../base/base.entity';
 import { Like } from './like.entity';
 import * as bcrypt from 'bcrypt';
@@ -7,13 +7,13 @@ import { Feed } from './feed.entity';
 
 @Entity('users')
 export class User extends BaseEntity {
-  @PrimaryGeneratedColumn({
+  @PrimaryColumn('varchar', {
     name: 'user_id',
     comment: '회원 아이디',
   })
-  userId?: number;
+  userId?: string;
 
-  @Column({
+  @Column('varchar', {
     name: 'email',
     comment: '회원 이메일',
     nullable: true,
