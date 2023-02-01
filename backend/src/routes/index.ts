@@ -9,7 +9,7 @@ class Routes {
   }
   public routes(): Router {
     this.router.use('/beach', BeachRouter);
-    this.router.use('/user', UserRouter);
+    this.router.use('/users', UserRouter);
     return this.router;
   }
 }
