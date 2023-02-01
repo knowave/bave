@@ -9,13 +9,13 @@ export class Like extends BaseEntity {
     name: 'like_id',
     comment: '좋아요 ID',
   })
-  likeId?: number;
+  likeId: number;
 
   @ManyToOne(() => User, (user) => user.likeList)
   @JoinColumn({ name: 'user_id', referencedColumnName: 'userId' })
-  user?: User;
+  user: User;
 
   @ManyToOne(() => Feed, (feed) => feed.likeList)
   @JoinColumn({ name: 'feed_id', referencedColumnName: 'feedId' })
-  feed?: Feed;
+  feed: Feed;
 }

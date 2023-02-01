@@ -20,6 +20,7 @@ export default class UserRepository {
     }
 
     const createUser = await this.userRepository.create({
+      userId: userId,
       email: email,
       username: username,
     });

@@ -9,20 +9,20 @@ export class Reply extends BaseEntity {
     name: 'reply_id',
     comment: '댓글 ID',
   })
-  replyId?: number;
+  replyId: number;
 
   @Column('varchar', {
     name: 'contents',
     comment: '댓글',
     nullable: false,
   })
-  contents?: string;
+  contents: string;
 
   @ManyToOne(() => User, (user) => user.replyList)
   @JoinColumn({ name: 'user_id', referencedColumnName: 'userId' })
-  user?: User;
+  user: User;
 
   @ManyToOne(() => Feed, (feed) => feed.replyList)
   @JoinColumn({ name: 'feed_id', referencedColumnName: 'feedId' })
-  feed?: Feed;
+  feed: Feed;
 }
