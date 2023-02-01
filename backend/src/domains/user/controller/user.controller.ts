@@ -1,6 +1,7 @@
 import UserService from '../service/user.service';
 import { Request, RequestHandler, Response } from 'express';
 import { STATUS_CODE } from '../../../exception/status-code';
+import { CreateUserDto } from '../dto/create-user.dto';
 
 export default class UserController {
   constructor(private userService: UserService) {}
@@ -8,11 +9,11 @@ export default class UserController {
   /**
    * 유저 생성
    */
-  public findOrCreate: RequestHandler = async (req: Request, res: Response) => {
-    const { userId, email, username } = req.body;
+  public creatUser: RequestHandler = async (req: Request, res: Response) => {
+    const createUser: CreateUserDto = req.body;
 
     try {
-      const user = await this.userService.findOrCreate(userId, email, username);
+      const user = await this.userService.creatUser(createUser);
       return res.status(STATUS_CODE.SUCCESS.OK).json(user);
     } catch (error) {
       console.log('유저 생성 ERROR : ', error);

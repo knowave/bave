@@ -1,5 +1,6 @@
 import UserRepository from '../repository/user.repository';
 import { User } from '../entity/user.entity';
+import { CreateUserDto } from '../dto/create-user.dto';
 
 export default class UserService {
   private userRepository: UserRepository;
@@ -10,8 +11,8 @@ export default class UserService {
   /**
    * 유저 생성
    */
-  public async findOrCreate(userId: string, email: string, username: string): Promise<User> {
-    return await this.userRepository.findOrCreate(userId, email, username);
+  public async creatUser(createUser: CreateUserDto): Promise<User> {
+    return await this.userRepository.creatUser(createUser);
   }
 
   /**

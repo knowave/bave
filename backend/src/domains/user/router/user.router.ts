@@ -14,7 +14,7 @@ class UserRouter {
   }
 
   userMainRouter(): Router {
-    this.userRouter.post('/', this.userController.findOrCreate);
+    this.userRouter.post('/', this.userController.creatUser);
     this.userRouter.get('/:userId', this.userController.findOneByUser);
     return this.userRouter;
   }

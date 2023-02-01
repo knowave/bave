@@ -18,4 +18,8 @@ export const USER_EXCEPTION = {
     code: 'NOT_FOUND_USER',
     message: '존재하는 유저가 없습니다.',
   },
+  NOT_MATCH_PASSWORD: {
+    code: 'NOT_MATCH_PASSWORD',
+    message: '비밀번호가 일치하지 않습니다.',
+  },
 };
