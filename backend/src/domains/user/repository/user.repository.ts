@@ -16,7 +16,7 @@ export default class UserRepository {
     const existUser = await this.userRepository.findOne({ where: { userId } });
 
     if (existUser) {
-      throw USER_EXCEPTION.NOT_FOUND_USER;
+      throw USER_EXCEPTION.EXIST_USER;
     }
 
     const createUser = await this.userRepository.create({
@@ -25,5 +25,18 @@ export default class UserRepository {
     });
 
     return createUser;
+  }
+
+  /**
+   * 특정 유저 조회
+   */
+  public async findOneByUser(userId: string): Promise<User> {
+    const user = await this.userRepository.findOne({ where: { userId } });
+
+    if (!user) {
+      throw USER_EXCEPTION.NOT_FOUND_USER;
+    }
+
+    return user;
   }
 }

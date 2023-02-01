@@ -19,4 +19,16 @@ export default class UserController {
       return res.status(STATUS_CODE.ERROR.BAD_REQUEST).send(error);
     }
   };
+
+  public findOneByUser: RequestHandler = async (req: Request, res: Response) => {
+    const { userId } = req.params;
+
+    try {
+      const user = await this.userService.findOndeByUser(userId);
+      return res.status(STATUS_CODE.SUCCESS.OK).json(user);
+    } catch (error) {
+      console.log('특정 유저 조회 ERROR : ', error);
+      return res.status(STATUS_CODE.ERROR.BAD_REQUEST).send(error);
+    }
+  };
 }

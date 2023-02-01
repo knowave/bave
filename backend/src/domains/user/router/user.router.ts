@@ -1,10 +1,12 @@
 import BeachService from '../../beach/service/beach.service';
 import BeachController from '../../beach/controller/beach.controller';
 import { Router } from 'express';
+import UserService from '../service/user.service';
+import UserController from '../controller/user.controller';
 
 class UserRouter {
-  public userService: BeachService;
-  public userController: BeachController;
+  public userService: UserService;
+  public userController: UserController;
   private userRouter: Router;
 
   constructor() {
@@ -14,7 +16,8 @@ class UserRouter {
   }
 
   userMainRouter(): Router {
-    this.userRouter.post('/', this.userController.findOneBeach);
+    this.userRouter.post('/', this.userController.findOrCreate);
+    this.userRouter.get('/:userId', this.userController.findOneByUser);
     return this.userRouter;
   }
 }

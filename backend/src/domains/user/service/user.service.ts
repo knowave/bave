@@ -13,4 +13,11 @@ export default class UserService {
   public async findOrCreate(userId: string, email: string, username: string): Promise<User> {
     return await this.userRepository.findOrCreate(userId, email, username);
   }
+
+  /**
+   * 특정 유저 조회
+   */
+  public async findOndeByUser(userId: string): Promise<User> {
+    return await this.userRepository.findOneByUser(userId);
+  }
 }

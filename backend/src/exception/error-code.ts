@@ -10,6 +10,10 @@ export const BEACH_EXCEPTION = {
 };
 
 export const USER_EXCEPTION = {
+  EXIST_USER: {
+    code: 'EXIST_USER',
+    message: '이미 존재하는 유저입니다.',
+  },
   NOT_FOUND_USER: {
     code: 'NOT_FOUND_USER',
     message: '존재하는 유저가 없습니다.',
