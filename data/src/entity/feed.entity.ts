@@ -11,28 +11,28 @@ export class Feed extends BaseEntity {
     name: 'feed_id',
     comment: '피드 ID',
   })
-  feedId?: number;
+  feedId: number;
 
   @Column('varchar', {
     name: 'content',
     comment: '피드 글',
     nullable: false,
   })
-  content?: string;
+  content: string;
 
   @ManyToOne(() => User, (user) => user.feedList)
   @JoinColumn({ name: 'user_id', referencedColumnName: 'userId' })
-  user?: User;
+  user: User;
 
   @ManyToOne(() => Beach, (beach) => beach.feedList)
   @JoinColumn({ name: 'beach_id', referencedColumnName: 'beachId' })
-  beach?: Beach;
+  beach: Beach;
 
   @OneToMany(() => Reply, (reply) => reply.feed)
   @JoinColumn({ name: 'reply_id', referencedColumnName: 'replyId' })
-  replyList?: Reply[];
+  replyList: Reply[];
 
   @OneToMany(() => Like, (like) => like.feed)
   @JoinColumn({ name: 'like_id', referencedColumnName: 'likeId' })
-  likeList?: Like[];
+  likeList: Like[];
 }
