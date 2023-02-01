@@ -1,5 +1,3 @@
-import BeachService from '../../beach/service/beach.service';
-import BeachController from '../../beach/controller/beach.controller';
 import { Router } from 'express';
 import UserService from '../service/user.service';
 import UserController from '../controller/user.controller';
@@ -11,8 +9,8 @@ class UserRouter {
 
   constructor() {
     this.userRouter = Router() as Router;
-    this.userService = new BeachService();
-    this.userController = new BeachController(this.userService);
+    this.userService = new UserService();
+    this.userController = new UserController(this.userService);
   }
 
   userMainRouter(): Router {
