@@ -26,7 +26,6 @@ export default class UserRepository {
     }
 
     const createUser = await this.userRepository.create({
-      userId,
       email,
       username,
       password,
@@ -39,7 +38,7 @@ export default class UserRepository {
   /**
    * 특정 유저 조회
    */
-  public async findOneByUser(userId: string): Promise<User> {
+  public async findOneByUser(userId: number): Promise<User> {
     const user = await this.userRepository.findOne({ where: { userId } });
 
     if (!user) {

@@ -6,6 +6,7 @@ import connectionOptions from '../database/type-orm.config';
 module.exports = () => {
   const user = connectionOptions.getRepository(User);
   passport.use(
+    'kakao',
     new KakaoStrategy(
       {
         clientID: String(process.env.KAKAO_APIKEY),
