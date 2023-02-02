@@ -13,10 +13,10 @@ export default class BeachRepository {
    * 해수욕장 전체 조회
    */
   public async getAllBeach(query: any): Promise<Beach[]> {
-    const limit = query.itemPerPage ?? 20;
+    const limit = query.itemPerPage ?? 10;
     const page = query.page ?? 1;
     const skip = limit * (page - 1) ?? 0;
-    const beaches = await this.beachRepository.createQueryBuilder('beach').limit(limit).skip(skip).orderBy('beach.beachId', query.sort).getMany();
+    const beaches = await this.beachRepository.createQueryBuilder('beach').take(limit).skip(skip).orderBy('beach.beachId', 'DESC').getMany();
     if (beaches.length === 0) {
       throw BEACH_EXCEPTION.NOT_FOUND_BEACHES;
     }
