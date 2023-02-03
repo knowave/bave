@@ -18,7 +18,14 @@ export default class UserService {
   /**
    * 특정 유저 조회
    */
-  public async findOndeByUser(userId: number): Promise<User> {
+  public async findOndByUser(userId: number): Promise<User> {
     return await this.userRepository.findOneByUser(userId);
+  }
+
+  /**
+   * SignIn 용 특정 유저 조회
+   */
+  public async findOneSignInUser(email: string): Promise<User> {
+    return await this.userRepository.findOneBySignInUser(email);
   }
 }

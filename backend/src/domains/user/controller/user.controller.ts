@@ -25,7 +25,7 @@ export default class UserController {
     const { userId } = req.params;
 
     try {
-      const user = await this.userService.findOndeByUser(Number(userId));
+      const user = await this.userService.findOndByUser(Number(userId));
       return res.status(STATUS_CODE.SUCCESS.OK).json(user);
     } catch (error) {
       console.log('특정 유저 조회 ERROR : ', error);

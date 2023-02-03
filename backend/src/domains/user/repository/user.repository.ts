@@ -39,7 +39,20 @@ export default class UserRepository {
    * 특정 유저 조회
    */
   public async findOneByUser(userId: number): Promise<User> {
-    const user = await this.userRepository.findOne({ select: ['userId', 'password', 'username'], where: { userId } });
+    const user = await this.userRepository.findOne({ select: ['userId', 'email', 'password', 'username'], where: { userId } });
+
+    if (!user) {
+      throw USER_EXCEPTION.NOT_FOUND_USER;
+    }
+
+    return user;
+  }
+
+  /**
+   * SignIn 용 특정 유저 조회
+   */
+  public async findOneBySignInUser(email: string): Promise<User> {
+    const user = await this.userRepository.findOne({ select: ['userId', 'email', 'password', 'username'], where: { email } });
 
     if (!user) {
       throw USER_EXCEPTION.NOT_FOUND_USER;
