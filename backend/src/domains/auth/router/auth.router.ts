@@ -1,33 +1,20 @@
-import { Request, Response, Router } from 'express';
-import passport from 'passport';
+import { AuthController } from '../controller/auth.controller';
+import UserService from '../../user/service/user.service';
+import { Router } from 'express';
 
 class AuthRouter {
-  private readonly authRouter: Router;
+  public usersService: UserService;
+  public authController: AuthController;
+  private authRouter: Router;
 
   constructor() {
     this.authRouter = Router() as Router;
+    this.usersService = new UserService();
+    this.authController = new AuthController(this.usersService);
   }
 
   authMainRouter(): Router {
-    this.authRouter.get('/logout', (req: Request, res: Response) => {
-      req.logout((done) => {
-        done();
-      });
-      req.session.destroy((done) => {
-        done();
-      });
-      res.redirect('/');
-    });
-    this.authRouter.get('/kakao', passport.authenticate('kakao'));
-    this.authRouter.get(
-      '/kakao/callback',
-      passport.authenticate('kakao', {
-        failureRedirect: '/',
-      }),
-      (req: Request, res: Response) => {
-        res.redirect('/');
-      },
-    );
+    this.authRouter.post('/sign-in', this.authController.signUp);
     return this.authRouter;
   }
 }

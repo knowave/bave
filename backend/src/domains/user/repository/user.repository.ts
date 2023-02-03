@@ -39,7 +39,7 @@ export default class UserRepository {
    * 특정 유저 조회
    */
   public async findOneByUser(userId: number): Promise<User> {
-    const user = await this.userRepository.findOne({ where: { userId } });
+    const user = await this.userRepository.findOne({ select: ['userId', 'password', 'username'], where: { userId } });
 
     if (!user) {
       throw USER_EXCEPTION.NOT_FOUND_USER;
