@@ -5,8 +5,11 @@ import { STATUS_CODE } from '../../../exception/status-code';
 const validate = async (req: Request, res: Response, next: NextFunction) => {
   const error = validationResult(req);
 
-  if (error !== null) {
-    return res.status(STATUS_CODE.ERROR.BAD_REQUEST).json({ Error: error.array() });
+  console.log('Request : ', req);
+  console.log('Response : ', res);
+
+  if (error) {
+    return res.status(STATUS_CODE.ERROR.BAD_REQUEST).json({ errorMessage: error });
 
     next();
   }

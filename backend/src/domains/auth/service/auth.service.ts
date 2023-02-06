@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt';
 import UserRepository from '../../user/repository/user.repository';
 import dotenv, { DotenvConfigOutput } from 'dotenv';
 import jwt from 'jsonwebtoken';
+import { User } from '../../user/entity/user.entity';
 
 export default class AuthService {
   private userRepository: UserRepository;
@@ -11,6 +12,13 @@ export default class AuthService {
   constructor() {
     this.userRepository = new UserRepository();
     this.env = dotenv.config();
+  }
+
+  /**
+   * email로 유저 조회
+   */
+  public async findOneSignInUser(email: string): Promise<User> {
+    return await this.userRepository.findOneBySignInUser(email);
   }
 
   /**
@@ -34,8 +42,7 @@ export default class AuthService {
   public async generateToken(userId: number, email: string, password: string) {
     const secretKey = String(process.env.JWT_SECRET_KEY);
 
-    const token = jwt.sign({ userId, email, password }, secretKey);
-    return token;
+    return jwt.sign({ userId, email, password }, secretKey);
   }
 
   /**
