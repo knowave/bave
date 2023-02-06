@@ -43,9 +43,13 @@ export class AuthController {
         return res.status(STATUS_CODE.ERROR.NOT_FOUND).send({ ErrorMessage: '비밀번호가 일치하지 않습니다' });
       }
 
-      const token = await this.authService.generateToken(user.userId, user.email, user.password);
+      const accessToken = await this.authService.generateToken(user.userId, user.email, user.password);
+      const refreshToken = await this.authService.generateRefreshToken(user.userId, user.email, user.password);
 
-      return res.json({ token });
+      return res.json({
+        accessToken: accessToken,
+        refreshToken: refreshToken,
+      });
     } catch (error) {
       console.log('로그인 ERROR : ', error);
       return res.status(STATUS_CODE.ERROR.BAD_REQUEST).send({ message: '로그인에 실패하였습니다.' });

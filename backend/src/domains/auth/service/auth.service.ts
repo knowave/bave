@@ -41,8 +41,19 @@ export default class AuthService {
    */
   public async generateToken(userId: number, email: string, password: string) {
     const secretKey = String(process.env.JWT_SECRET_KEY);
+    const expiresIn = process.env.JWT_ACCESS_TOKEN_EXPIRATION_TIME;
 
-    return jwt.sign({ userId, email, password }, secretKey);
+    return jwt.sign({ userId, email, password }, secretKey, { expiresIn: expiresIn });
+  }
+
+  /**
+   * RefreshToken
+   */
+  public async generateRefreshToken(userId: number, email: string, password: string) {
+    const secretKey = String(process.env.JWT_REFRESH_SECRET_KEY);
+    const expiresIn = process.env.JWT_REFRESH_TOKEN_EXPIRATION_TIME;
+
+    return jwt.sign({ userId, email, password }, secretKey, { expiresIn: expiresIn });
   }
 
   /**
