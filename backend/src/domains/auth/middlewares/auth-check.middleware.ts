@@ -1,4 +1,3 @@
-// TODO
 import { NextFunction, Request, Response } from 'express';
 import * as jwt from 'jsonwebtoken';
 import { STATUS_CODE } from '../../../exception/status-code';
