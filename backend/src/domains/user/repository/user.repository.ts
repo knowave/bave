@@ -60,4 +60,11 @@ export default class UserRepository {
 
     return user;
   }
+
+  /**
+   * 발급 받은 RefreshToken 저장
+   */
+  public async setCurrentRefreshToken(refreshToken: string, userId: number) {
+    return await this.userRepository.update(userId, { jwtToken: refreshToken });
+  }
 }

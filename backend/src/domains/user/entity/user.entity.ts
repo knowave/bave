@@ -36,7 +36,7 @@ export class User extends BaseEntity {
   })
   username: string;
 
-  @Column('varchar', {
+  @Column('longtext', {
     name: 'jwt_token',
     comment: 'jwt refresh token',
     nullable: true,

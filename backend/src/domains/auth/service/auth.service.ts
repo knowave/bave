@@ -57,6 +57,17 @@ export default class AuthService {
   }
 
   /**
+   * 발급 받은 RefreshToken 저장
+   */
+  public async setCurrentRefreshToken(refreshToken: string, userId: number) {
+    if (!userId) {
+      throw USER_EXCEPTION.NOT_FOUND_USER;
+    }
+
+    return await this.userRepository.setCurrentRefreshToken(refreshToken, userId);
+  }
+
+  /**
    * 비밀번호 유횽성 검사 method
    */
   private async comparePassword(password: string, hashedPassword: string) {
