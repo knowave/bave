@@ -1,6 +1,7 @@
 import UserRepository from '../repository/user.repository';
 import { User } from '../entity/user.entity';
 import { CreateUserDto } from '../dto/create-user.dto';
+import { USER_EXCEPTION } from '../../../exception/error-code';
 
 export default class UserService {
   private userRepository: UserRepository;
@@ -11,8 +12,23 @@ export default class UserService {
   /**
    * 유저 생성
    */
-  public async creatUser(createUser: CreateUserDto): Promise<User> {
-    return await this.userRepository.creatUser(createUser);
+  public async creatUser(createUserDto: CreateUserDto): Promise<User> {
+    const { userId, email, username, password, confirmPassword } = createUserDto;
+    const user = await this.userRepository.findOneByUser(userId);
+
+    if (user.email === email) {
+      throw USER_EXCEPTION.EXIST_USER;
+    }
+
+    if (user.username === username) {
+      throw USER_EXCEPTION.EXIST_USERNAME;
+    }
+
+    if (password !== confirmPassword) {
+      throw USER_EXCEPTION.NOT_MATCH_PASSWORD;
+    }
+
+    return await this.userRepository.creatUser(createUserDto);
   }
 
   /**

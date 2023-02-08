@@ -14,6 +14,10 @@ export const USER_EXCEPTION = {
     code: 'EXIST_USER',
     message: '이미 존재하는 유저입니다.',
   },
+  EXIST_USERNAME: {
+    code: 'EXIST_USERNAME',
+    message: '이미 존재하는 닉네임입니다.',
+  },
   NOT_FOUND_USER: {
     code: 'NOT_FOUND_USER',
     message: '존재하는 유저가 없습니다.',

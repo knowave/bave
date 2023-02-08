@@ -14,16 +14,7 @@ export default class UserRepository {
    * 유저 생성
    */
   public async creatUser(createUserDto: CreateUserDto): Promise<User> {
-    const { userId, email, username, password, confirmPassword } = createUserDto;
-    const existUser = await this.userRepository.findOne({ where: { userId } });
-
-    if (existUser !== null) {
-      throw USER_EXCEPTION.EXIST_USER;
-    }
-
-    if (password !== confirmPassword) {
-      throw USER_EXCEPTION.NOT_MATCH_PASSWORD;
-    }
+    const { email, username, password } = createUserDto;
 
     const createUser = await this.userRepository.create({
       email,
