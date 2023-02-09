@@ -27,3 +27,10 @@ export const USER_EXCEPTION = {
     message: '비밀번호가 일치하지 않습니다.',
   },
 };
+
+export const FEED_EXCEPTION = {
+  NOT_FOUND_FEED: {
+    code: 'NOT_FOUND_FEED',
+    message: '피드를 찾을 수 없습니다.',
+  },
+};

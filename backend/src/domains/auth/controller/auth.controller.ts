@@ -43,10 +43,10 @@ export class AuthController {
    * 회원 로그아웃
    */
   public signOut: RequestHandler = async (req: Request, res: Response) => {
-    const user = req.user;
-    console.log(user);
+    // const userId = res.locals.jwtPayload.userId;
+    console.log(res.locals.jwtPayload);
     try {
-      // await this.authService.removeRefreshToken(user);
+      // await this.authService.removeRefreshToken(userId);
       return res.status(STATUS_CODE.SUCCESS.OK).send({ message: '로그아웃 완료' });
     } catch (error) {
       console.log('로그아웃 ERROR : ', error);
