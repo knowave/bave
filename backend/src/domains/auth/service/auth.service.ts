@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt';
 import UserRepository from '../../user/repository/user.repository';
 import dotenv, { DotenvConfigOutput } from 'dotenv';
 import jwt from 'jsonwebtoken';
-import { User } from '../../user/entity/user.entity';
+import { Users } from '../../user/entity/user.entity';
 
 export default class AuthService {
   private userRepository: UserRepository;
@@ -17,7 +17,7 @@ export default class AuthService {
   /**
    * email로 유저 조회
    */
-  public async findOneSignInUser(email: string): Promise<User> {
+  public async findOneSignInUser(email: string): Promise<Users> {
     return await this.userRepository.findOneBySignInUser(email);
   }
 
@@ -65,6 +65,13 @@ export default class AuthService {
     }
 
     return await this.userRepository.setCurrentRefreshToken(refreshToken, userId);
+  }
+
+  /**
+   * refreshToken 삭제
+   */
+  public async removeRefreshToken(userId: number) {
+    return this.userRepository.removeRefreshToken(userId);
   }
 
   /**

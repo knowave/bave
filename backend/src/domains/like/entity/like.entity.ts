@@ -1,6 +1,6 @@
 import { Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { BaseEntity } from '../../../base/base.entity';
-import { User } from '../../user/entity/user.entity';
+import { Users } from '../../user/entity/user.entity';
 import { Feed } from '../../feed/entity/feed.entity';
 
 @Entity('like')
@@ -11,9 +11,9 @@ export class Like extends BaseEntity {
   })
   likeId: number;
 
-  @ManyToOne(() => User, (user) => user.likeList)
+  @ManyToOne(() => Users, (user) => user.likeList)
   @JoinColumn({ name: 'user_id', referencedColumnName: 'userId' })
-  user: User;
+  user: Users;
 
   @ManyToOne(() => Feed, (feed) => feed.likeList)
   @JoinColumn({ name: 'feed_id', referencedColumnName: 'feedId' })

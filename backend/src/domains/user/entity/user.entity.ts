@@ -6,7 +6,7 @@ import { Reply } from '../../reply/entity/reply.entity';
 import { Feed } from '../../feed/entity/feed.entity';
 
 @Entity('users')
-export class User extends BaseEntity {
+export class Users extends BaseEntity {
   @PrimaryGeneratedColumn({
     name: 'user_id',
     comment: '회원 아이디',

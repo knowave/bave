@@ -2,11 +2,11 @@ import passport from 'passport';
 import { Strategy as KakaoStrategy } from 'passport-kakao';
 import dotenv from 'dotenv';
 import { connectionOptions } from '../database/type-orm.config';
-import { User } from '../domains/user/entity/user.entity';
+import { Users } from '../domains/user/entity/user.entity';
 
 dotenv.config();
 
-const userRepository = connectionOptions.getRepository(User);
+const userRepository = connectionOptions.getRepository(Users);
 module.exports = () => {
   passport.use(
     new KakaoStrategy(

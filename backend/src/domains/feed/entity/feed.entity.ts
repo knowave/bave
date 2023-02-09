@@ -1,6 +1,6 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { BaseEntity } from '../../../base/base.entity';
-import { User } from '../../user/entity/user.entity';
+import { Users } from '../../user/entity/user.entity';
 import { Reply } from '../../reply/entity/reply.entity';
 import { Like } from '../../like/entity/like.entity';
 import { Beach } from '../../beach/entity/beach.entity';
@@ -20,9 +20,9 @@ export class Feed extends BaseEntity {
   })
   content: string;
 
-  @ManyToOne(() => User, (user) => user.feedList)
+  @ManyToOne(() => Users, (user) => user.feedList)
   @JoinColumn({ name: 'user_id', referencedColumnName: 'userId' })
-  user: User;
+  user: Users;
 
   @ManyToOne(() => Beach, (beach) => beach.feedList)
   @JoinColumn({ name: 'beach_id', referencedColumnName: 'beachId' })

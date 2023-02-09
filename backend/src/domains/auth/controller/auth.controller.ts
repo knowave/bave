@@ -1,28 +1,10 @@
 import { Request, RequestHandler, Response } from 'express';
 import { STATUS_CODE } from '../../../exception/status-code';
 import AuthService from '../service/auth.service';
+import RequestInterface from '../../../interface/requestInterface';
 
 export class AuthController {
   constructor(private authService: AuthService) {}
-
-  /**
-   * email 유저 조회
-   */
-  public findOneByEmail: RequestHandler = async (req: Request, res: Response) => {
-    const { email } = req.params;
-
-    try {
-      const user = await this.authService.findOneSignInUser(email);
-
-      if (!user) {
-        return res.status(STATUS_CODE.ERROR.BAD_REQUEST).send({ errorMessage: '없는 유저' });
-      }
-
-      return res.json({ user });
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   /**
    * 회원 로그인
@@ -55,6 +37,20 @@ export class AuthController {
     } catch (error) {
       console.log('로그인 ERROR : ', error);
       return res.status(STATUS_CODE.ERROR.BAD_REQUEST).send({ message: '로그인에 실패하였습니다.' });
+    }
+  };
+
+  /**
+   * 회원 로그아웃
+   */
+  public signOut = async (req: RequestInterface, res: Response) => {
+    const userId = req.user;
+    try {
+      await this.authService.removeRefreshToken(userId.userId);
+      return res.status(STATUS_CODE.SUCCESS.OK).send({ message: '로그아웃 완료' });
+    } catch (error) {
+      console.log('로그아웃 ERROR : ', error);
+      return res.status(STATUS_CODE.ERROR.BAD_REQUEST).send({ message: '로그아웃 실패' });
     }
   };
 }

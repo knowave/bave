@@ -16,7 +16,7 @@ class AuthRouter {
   authMainRouter(): Router {
     // this.authRouter.post('/sign-in', validate, this.authController.signUp);
     this.authRouter.post('/sign-in', this.authController.signUp);
-    this.authRouter.get('/:email', this.authController.findOneByEmail);
+    this.authRouter.post('/s', this.authController.signOut);
     return this.authRouter;
   }
 }

@@ -1,5 +1,5 @@
 import { DataSource } from 'typeorm';
-import { User } from '../domains/user/entity/user.entity';
+import { Users } from '../domains/user/entity/user.entity';
 import * as dotenv from 'dotenv';
 import { Beach } from '../domains/beach/entity/beach.entity';
 import { Feed } from '../domains/feed/entity/feed.entity';
@@ -16,7 +16,7 @@ export const connectionOptions = new DataSource({
   database: process.env.DB_NAME,
   synchronize: true,
   logging: false,
-  entities: [User, Beach, Feed, Reply, Like],
+  entities: [Users, Beach, Feed, Reply, Like],
 });
 
 export default connectionOptions;
