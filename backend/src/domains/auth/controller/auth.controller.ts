@@ -1,7 +1,6 @@
 import { Request, RequestHandler, Response } from 'express';
 import { STATUS_CODE } from '../../../exception/status-code';
 import AuthService from '../service/auth.service';
-import RequestInterface from '../../../interface/requestInterface';
 
 export class AuthController {
   constructor(private authService: AuthService) {}
@@ -43,10 +42,11 @@ export class AuthController {
   /**
    * 회원 로그아웃
    */
-  public signOut = async (req: RequestInterface, res: Response) => {
-    const userId = req.user;
+  public signOut: RequestHandler = async (req: Request, res: Response) => {
+    const user = req.user;
+    console.log(user);
     try {
-      await this.authService.removeRefreshToken(userId.userId);
+      // await this.authService.removeRefreshToken(user);
       return res.status(STATUS_CODE.SUCCESS.OK).send({ message: '로그아웃 완료' });
     } catch (error) {
       console.log('로그아웃 ERROR : ', error);
