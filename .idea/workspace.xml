@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="f6d8b630-5039-480a-bf57-bd79e0602e7a" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
+>>>>>>> c1941b16cc2f4e2b46d5e2e9b01900917bd51a3b
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,13 +44,22 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;code.cleanup.on.save&quot;: &quot;true&quot;,
+<<<<<<< HEAD
     &quot;last_opened_file_path&quot;: &quot;/Users/kwaktaemin/Desktop/studyspace/typescript/bave&quot;,
+=======
+    &quot;last_opened_file_path&quot;: &quot;/Users/kwaktaemin/workspace/study/express-js/bave/data/src&quot;,
+>>>>>>> c1941b16cc2f4e2b46d5e2e9b01900917bd51a3b
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+<<<<<<< HEAD
+=======
+    &quot;nodejs.jest.jest_package&quot;: &quot;/Users/kwaktaemin/workspace/study/express-js/bave/backend/node_modules/jest&quot;,
+    &quot;nodejs.mocha.mocha_node_package_dir&quot;: &quot;/Users/kwaktaemin/workspace/study/express-js/bave/backend/node_modules/mocha&quot;,
+>>>>>>> c1941b16cc2f4e2b46d5e2e9b01900917bd51a3b
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.linters.eslint&quot;,
@@ -61,23 +74,86 @@
       <recent name="$PROJECT_DIR$/data/src/entity" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/data/src" />
+      <recent name="$PROJECT_DIR$/backend/src/domains/auth" />
+      <recent name="$PROJECT_DIR$/backend/src/domains/auth/controller" />
+      <recent name="$PROJECT_DIR$/backend/src/domains/reply/entity" />
+      <recent name="$PROJECT_DIR$/backend/src/domains/like/entity" />
+      <recent name="$PROJECT_DIR$/backend/src/domains/reply" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="npm.start:debug">
+    <configuration name="해수욕장 API 테스트.성공" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/backend/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$/backend" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/backend/test/beach/beach.test.ts" />
+      <test-names>
+        <test-name value="해수욕장 API 테스트" />
+        <test-name value="성공" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="start:debug" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/backend/package.json" />
       <command value="run" />
       <scripts>
-        <script value="start" />
+        <script value="start:debug" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/backend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="test" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="해수욕장 API 테스트.성공" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <mocha-package>$PROJECT_DIR$/backend/node_modules/mocha</mocha-package>
+      <working-directory>$PROJECT_DIR$/backend</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <ui>bdd</ui>
+      <extra-mocha-options>--require ts-node/register</extra-mocha-options>
+      <test-kind>SUITE</test-kind>
+      <test-file>$PROJECT_DIR$/backend/test/beach/beach.test.ts</test-file>
+      <test-names>
+        <name value="해수욕장 API 테스트" />
+        <name value="성공" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="해수욕장 API 테스트" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <mocha-package>$PROJECT_DIR$/backend/node_modules/mocha</mocha-package>
+      <working-directory>$PROJECT_DIR$/backend</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <ui>bdd</ui>
+      <extra-mocha-options>--require ts-node/register</extra-mocha-options>
+      <test-kind>SUITE</test-kind>
+      <test-file>$PROJECT_DIR$/backend/test/beach/beach.test.ts</test-file>
+      <test-names>
+        <name value="해수욕장 API 테스트" />
+      </test-names>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.start" />
+        <item itemvalue="npm.start:debug" />
+        <item itemvalue="npm.test" />
+        <item itemvalue="Mocha.해수욕장 API 테스트.성공" />
+        <item itemvalue="Mocha.해수욕장 API 테스트" />
+        <item itemvalue="Jest.해수욕장 API 테스트.성공" />
       </list>
     </recent_temporary>
   </component>
@@ -96,10 +172,19 @@
       <workItem from="1672884615389" duration="508000" />
       <workItem from="1672908295249" duration="10100000" />
       <workItem from="1673227537546" duration="14131000" />
+<<<<<<< HEAD
       <workItem from="1673255154455" duration="50271000" />
       <workItem from="1674021774502" duration="511000" />
       <workItem from="1675994475778" duration="81000" />
       <workItem from="1675994568794" duration="1137000" />
+=======
+      <workItem from="1673255154455" duration="75275000" />
+      <workItem from="1673829900443" duration="9402000" />
+      <workItem from="1673848622858" duration="16030000" />
+      <workItem from="1674699518208" duration="34135000" />
+      <workItem from="1675218031025" duration="42300000" />
+      <workItem from="1675404736899" duration="3341000" />
+>>>>>>> c1941b16cc2f4e2b46d5e2e9b01900917bd51a3b
     </task>
     <servers />
   </component>
@@ -121,7 +206,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/backend/src/entity/reply.entity.ts</url>
+          <url>file://$PROJECT_DIR$/backend/src/domains/reply/entity/reply.entity.ts</url>
           <line>3</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>

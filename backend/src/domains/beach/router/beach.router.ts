@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import BeachService from '../service/beach.service';
 import BeachController from '../controller/beach.controller';
+import BeachService from '../service/beach.service';
 
 class BeachRouter {
   public beachService: BeachService;
@@ -15,6 +15,7 @@ class BeachRouter {
 
   beachMainRouter(): Router {
     this.beachRouter.get('/', this.beachController.getAllBeach);
+    this.beachRouter.get('/:beachId', this.beachController.findOneBeach);
     return this.beachRouter;
   }
 }

@@ -161,7 +161,7 @@ export default class Client {
    */
   async createReplyByBeachId(beachId?: number, feedId?: number) {
     const replyUrl = `${host}/reply/${beachId}/${feedId}`;
-    const response = await request(this.app).post(`${replyUrl}`).send({ contents: 'test-reply' }).set('Authorization', `Bearer${this.jwt.accessToken}`);
+    const response = await request(this.app).post(`${replyUrl}`).send({ contents: 'test-entity' }).set('Authorization', `Bearer${this.jwt.accessToken}`);
 
     return response;
   }
@@ -181,7 +181,7 @@ export default class Client {
    */
   async updateReplyByFeed(beachId?: number, feedId?: number, replyId?: number) {
     const replyUrl = `${host}/reply/${beachId}/${feedId}/${replyId}`;
-    const response = await request(this.app).patch(`${replyUrl}`).send({ contents: 'update-reply' }).set('Authorization', `Bearer${this.jwt.accessToken}`);
+    const response = await request(this.app).patch(`${replyUrl}`).send({ contents: 'update-entity' }).set('Authorization', `Bearer${this.jwt.accessToken}`);
 
     return response;
   }

@@ -1,4 +1,4 @@
-import { BeforeUpdate, Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { BeforeUpdate, Column, Entity, JoinColumn, OneToMany, PrimaryColumn } from 'typeorm';
 import { BaseEntity } from '../base/base.entity';
 import { Like } from './like.entity';
 import * as bcrypt from 'bcrypt';
@@ -7,26 +7,34 @@ import { Feed } from './feed.entity';
 
 @Entity('users')
 export class User extends BaseEntity {
-  @PrimaryGeneratedColumn({
+  @PrimaryColumn('varchar', {
     name: 'user_id',
     comment: '회원 아이디',
   })
-  userId?: string;
+  userId: string;
+
+  @Column('varchar', {
+    name: 'email',
+    comment: '회원 이메일',
+    nullable: false,
+    unique: true,
+  })
+  email: string;
 
   @Column('varchar', {
     name: 'password',
     comment: '패스워드',
-    nullable: true,
+    nullable: false,
     select: false,
   })
-  password?: string;
+  password: string;
 
   @Column('varchar', {
     name: 'username',
     comment: '회원 사용 이름',
-    nullable: true,
+    nullable: false,
   })
-  username?: string;
+  username: string;
 
   @Column('varchar', {
     name: 'jwt_token',
@@ -34,18 +42,18 @@ export class User extends BaseEntity {
     nullable: true,
     select: false,
   })
-  jwtToken?: string;
+  jwtToken?: string | undefined;
 
   @OneToMany(() => Like, (like) => like.user)
   @JoinColumn({ name: 'like_id', referencedColumnName: 'like_id' })
-  likeList?: Like[];
+  likeList: Like[];
 
   @OneToMany(() => Reply, (reply) => reply.user)
   @JoinColumn({ name: 'reply_id', referencedColumnName: 'replyId' })
-  replyList?: Reply[];
+  replyList: Reply[];
 
   @OneToMany(() => Feed, (feed) => feed.user)
-  feedList?: Feed[];
+  feedList: Feed[];
 
   async hashPassword(password: string): Promise<void> {
     this.password = await bcrypt.hash(password, 12);
