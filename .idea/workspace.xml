@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f6d8b630-5039-480a-bf57-bd79e0602e7a" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/src/routes/beach.router.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/controller/beach.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/controller/beach.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/routes/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/routes/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/service/beach.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/service/beach.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,26 +34,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "code.cleanup.on.save": "true",
-    "last_opened_file_path": "/Users/kwaktaemin/workspace/study/express-js/bave/data/src",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "rearrange.code.on.save": "true",
-    "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
-    "ts.external.directory.path": "/Users/kwaktaemin/workspace/study/express-js/bave/data/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;code.cleanup.on.save&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/kwaktaemin/Desktop/studyspace/typescript/bave&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.linters.eslint&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/kwaktaemin/workspace/study/express-js/bave/data/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/data/src" />
@@ -101,6 +97,9 @@
       <workItem from="1672908295249" duration="10100000" />
       <workItem from="1673227537546" duration="14131000" />
       <workItem from="1673255154455" duration="50271000" />
+      <workItem from="1674021774502" duration="511000" />
+      <workItem from="1675994475778" duration="81000" />
+      <workItem from="1675994568794" duration="830000" />
     </task>
     <servers />
   </component>
@@ -124,7 +123,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/backend/src/entity/reply.entity.ts</url>
           <line>3</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
