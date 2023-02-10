@@ -1,6 +1,7 @@
 import { AuthController } from '../controller/auth.controller';
 import { Router } from 'express';
 import AuthService from '../service/auth.service';
+import { authCheck } from '../middlewares/auth-check.middleware';
 
 class AuthRouter {
   public authService: AuthService;
@@ -14,9 +15,8 @@ class AuthRouter {
   }
 
   authMainRouter(): Router {
-    // this.authRouter.post('/sign-in', validate, this.authController.signUp);
-    this.authRouter.post('/sign-in', this.authController.signUp);
-    this.authRouter.post('/s', this.authController.signOut);
+    this.authRouter.post('/sign-in', this.authController.signIn);
+    this.authRouter.post('/sign-out', authCheck, this.authController.signOut);
     return this.authRouter;
   }
 }
