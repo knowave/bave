@@ -1,6 +1,8 @@
 import { Request, RequestHandler, Response } from 'express';
 import { STATUS_CODE } from '../../../exception/status-code';
 import AuthService from '../service/auth.service';
+import * as jwt from 'jsonwebtoken';
+import jwtObj from '../config/jwt.config';
 
 export class AuthController {
   constructor(private authService: AuthService) {}
@@ -44,8 +46,9 @@ export class AuthController {
    */
   public signOut: RequestHandler = async (req: Request, res: Response) => {
     try {
-      // await this.authService.removeRefreshToken(userId);
-      console.log(req.user);
+      const user = req.user;
+      console.log(user);
+      // await this.authService.removeRefreshToken()
       return res.status(STATUS_CODE.SUCCESS.OK).send({ message: '로그아웃 완료' });
     } catch (error) {
       console.log('로그아웃 ERROR : ', error);

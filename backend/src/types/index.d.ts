@@ -3,9 +3,10 @@ import { Users } from '../domains/user/entity/user.entity';
 
 declare global {
   namespace Express {
-    interface Request {
-      user?: Users
-      beach?: Beach
-   }
+    export interface Request {
+      user?: Users;
+      beach?: Beach;
+      userId?: number;
+    }
   }
 }
