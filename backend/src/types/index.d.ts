@@ -6,7 +6,7 @@ declare global {
   namespace Express {
     export interface Request {
       users?: IUser;
-      Beach?: Beach;
+      beach?: Beach;
     }
   }
 }
