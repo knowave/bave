@@ -17,7 +17,7 @@ class AuthRouter {
 
   authMainRouter(): Router {
     this.authRouter.post('/sign-in', this.authController.signIn);
-    this.authRouter.post('/sign-out', userMiddleware, this.authController.signOut);
+    this.authRouter.post('/sign-out', userMiddleware, authCheck, this.authController.signOut);
     return this.authRouter;
   }
 }

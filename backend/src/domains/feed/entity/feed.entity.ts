@@ -20,6 +20,13 @@ export class Feed extends BaseEntity {
   })
   content: string;
 
+  @Column('longtext', {
+    name: 'feed_image',
+    comment: 'feed image',
+    nullable: true,
+  })
+  image!: string | null;
+
   @ManyToOne(() => Users, (user) => user.feedList)
   @JoinColumn({ name: 'user_id', referencedColumnName: 'userId' })
   user: Users;
