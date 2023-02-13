@@ -1,51 +1,29 @@
-import AWS from 'aws-sdk';
-import awsS3 from '@aws-sdk/client-s3';
-import fs from 'fs';
+require('dotenv').config();
+import { S3Client } from '@aws-sdk/client-s3';
 import multer from 'multer';
 import multerS3 from 'multer-s3';
+import dotenv from 'dotenv';
+dotenv.config();
 
-const s3 = new AWS.S3({
-  region: process.env.AWS_REGION,
+const s3 = new S3Client({
+  region: process.env.AWS_S3_REGION,
   credentials: {
-    accessKeyId: String(process.env.AWS_ACCESS_KEY_ID),
-    secretAccessKey: String(process.env.AWS_SECRET_ACCESS_KEY),
+    accessKeyId: String(process.env.AWS_SE_ACCESS_KEY_AWS),
+    secretAccessKey: String(process.env.AWS_S3_ACCESS_SECRET_AWS),
   },
 });
 
-const BUCKET = process.env.AWS_BUCKET_NAME || '';
-
-// Uploads file from filesystem to S3
-export const uploadFile = (filepath: string, filename: string): Promise<AWS.S3.ManagedUpload.SendData> => {
-  const fileStream = fs.createReadStream(filepath);
-  const uploadParams = {
-    Bucket: BUCKET,
-    Body: fileStream,
-    Key: filename,
-  };
-  return s3.upload(uploadParams).promise();
-};
-
-export const deleteFile = (key: string) => {
-  return s3.deleteObject({ Bucket: BUCKET, Key: key }).promise();
-};
-
-// Middleware to upload file to S3 from form request
 export const upload = multer({
   storage: multerS3({
     s3: s3,
-    bucket: BUCKET,
+    bucket: process.env.AWS_S3_BUCKET || '',
     contentType: multerS3.AUTO_CONTENT_TYPE,
-    metadata: function (_req, file, cb) {
+    acl: 'public-read',
+    metadata: (req, file, cb) => {
       cb(null, { fieldName: file.fieldname });
     },
-    key: function (_req, file, cb) {
-      cb(null, `${Date.now().toString()}_${file.originalname}`);
+    key: (req, file, cb) => {
+      cb(null, Date.now().toString());
     },
   }),
-
-  fileFilter: (req, file, cb) => {
-    const isImage = file.mimetype.startsWith('image');
-    req.body.isImage = isImage;
-    cb(null, isImage);
-  },
 });
