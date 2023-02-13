@@ -12,9 +12,10 @@ export default class FeedController {
   public createFeed: RequestHandler = async (req: Request, res: Response) => {
     const { content } = req.body;
     const beach = req.beach as Beach;
+    const image = req.file;
 
     try {
-      const feed = await this.feedService.createFeed(beach, content);
+      const feed = await this.feedService.createFeed(beach, content, image);
       return res.status(STATUS_CODE.SUCCESS.CREATED).json(feed);
     } catch (error) {
       console.log('해수욕장 피드 생성 ERROR : ', error);

@@ -15,10 +15,11 @@ export default class FeedRepository {
   /**
    * 피드 작성
    */
-  public async createFeedByBeachId(beach: Beach, content: string): Promise<Feed> {
+  public async createFeedByBeachId(beach: Beach, content: string, image: string): Promise<Feed> {
     const feed = this.feedRepository.create({
       content,
       beach,
+      image,
     });
 
     return await this.feedRepository.save(feed);

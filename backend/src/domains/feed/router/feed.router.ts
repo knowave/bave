@@ -1,6 +1,7 @@
 import FeedService from '../service/feed.service';
 import FeedController from '../controller/feed.controller';
 import { Router } from 'express';
+import { upload } from '../middleware/upload.middleware';
 
 class FeedRouter {
   public feedService: FeedService;
@@ -14,7 +15,7 @@ class FeedRouter {
   }
 
   feedMainRouter(): Router {
-    this.feedRouter.post('/', this.feedController.createFeed);
+    this.feedRouter.post('/', upload.array('images'), this.feedController.createFeed);
     return this.feedRouter;
   }
 }

@@ -12,9 +12,9 @@ export default class FeedService {
   /**
    * 해수욕장 피드 작성
    */
-  public async createFeed(beach: Beach, content: string): Promise<Feed> {
+  public async createFeed(beach: Beach, content: string, image: string): Promise<Feed> {
     if (!beach) throw BEACH_EXCEPTION.NOT_FOUND_BEACH;
 
-    return await this.feedRepository.createFeedByBeachId(beach, content);
+    return await this.feedRepository.createFeedByBeachId(beach, content, image);
   }
 }
