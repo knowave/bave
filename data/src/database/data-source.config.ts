@@ -16,5 +16,5 @@ export const dataSourceConfig = new DataSource({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   entities: [User, Beach, Feed, Reply, Like],
-  synchronize: false,
+  synchronize: true,
 });

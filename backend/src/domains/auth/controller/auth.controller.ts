@@ -8,7 +8,7 @@ export class AuthController {
   /**
    * 회원 로그인
    */
-  public signUp: RequestHandler = async (req: Request, res: Response) => {
+  public signIn: RequestHandler = async (req: Request, res: Response) => {
     const { email, password } = req.body;
 
     try {
@@ -43,10 +43,9 @@ export class AuthController {
    * 회원 로그아웃
    */
   public signOut: RequestHandler = async (req: Request, res: Response) => {
-    // const userId = res.locals.jwtPayload.userId;
-    console.log(res.locals.jwtPayload);
     try {
       // await this.authService.removeRefreshToken(userId);
+      console.log(req.user);
       return res.status(STATUS_CODE.SUCCESS.OK).send({ message: '로그아웃 완료' });
     } catch (error) {
       console.log('로그아웃 ERROR : ', error);
