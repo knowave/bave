@@ -71,6 +71,10 @@ export default class AuthService {
    * refreshToken 삭제
    */
   public async removeRefreshToken(userId: number) {
+    if (!userId) {
+      throw USER_EXCEPTION.NOT_FOUND_USER;
+    }
+
     return this.userRepository.removeRefreshToken(userId);
   }
 

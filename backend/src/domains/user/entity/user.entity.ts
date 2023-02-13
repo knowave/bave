@@ -42,7 +42,7 @@ export class Users extends BaseEntity {
     nullable: true,
     select: false,
   })
-  jwtToken?: string | undefined;
+  jwtToken!: string | null;
 
   @OneToMany(() => Like, (like) => like.user)
   @JoinColumn({ name: 'like_id', referencedColumnName: 'like_id' })

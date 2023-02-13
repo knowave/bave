@@ -63,6 +63,6 @@ export default class UserRepository {
    * RefreshToken 삭제
    */
   public async removeRefreshToken(userId: number) {
-    return await this.userRepository.update(userId, { jwtToken: undefined });
+    return await this.userRepository.update(userId, { jwtToken: null });
   }
 }
