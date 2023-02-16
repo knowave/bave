@@ -1,25 +1,29 @@
-name: Node CI Example
+name: Project CI
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches: [main]
+
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
+
+    strategy:
+      node-version: [16.15.1]
+
     steps:
+      - name: Check Out Source Code.
       - uses: actions/checkout@v3
-      - name: Use Node.js 16.x
+
+      - name: Use Node.js 16.15.1
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
-          cache: 'yarn'
-          cache-dependency-path: subdir/yarn.lock
-      - run: yarn ci
-      - run: yarn install
-#      - run: yarn test
-#        env:
-#          DB_HOST: ${{ secrets.DB_HOST }}
-#          DB_USERNAME: ${{ secrets.DB_USERNAME }}
-#          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          node-version: 16.15.1
+
+      - name: Package Install
+        working-directory: ./src
+        run: yarn
+
+      - name: Source Code Build
+        working-directory: ./src
+        run: yarn build
