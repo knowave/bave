@@ -13,7 +13,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const user_repository_1 = __importDefault(require("../repository/user.repository"));
-const error_code_1 = require("../../../exception/error-code");
 class UserService {
     constructor() {
         this.userRepository = new user_repository_1.default();
@@ -23,17 +22,6 @@ class UserService {
      */
     creatUser(createUserDto) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { userId, email, username, password, confirmPassword } = createUserDto;
-            const user = yield this.userRepository.findOneByUser(userId);
-            if (user.email === email) {
-                throw error_code_1.USER_EXCEPTION.EXIST_USER;
-            }
-            if (user.username === username) {
-                throw error_code_1.USER_EXCEPTION.EXIST_USERNAME;
-            }
-            if (password !== confirmPassword) {
-                throw error_code_1.USER_EXCEPTION.NOT_MATCH_PASSWORD;
-            }
             return yield this.userRepository.creatUser(createUserDto);
         });
     }

@@ -24,12 +24,19 @@ class UserRepository {
      */
     creatUser(createUserDto) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { email, username, password } = createUserDto;
+            const { email, username, password, confirmPassword } = createUserDto;
             const createUser = yield this.userRepository.create({
                 email,
                 username,
                 password,
             });
+            const existUser = yield this.userRepository.findOne({ where: { email } });
+            if (existUser !== null) {
+                throw error_code_1.USER_EXCEPTION.EXIST_USER;
+            }
+            if (password !== confirmPassword) {
+                throw error_code_1.USER_EXCEPTION.NOT_MATCH_PASSWORD;
+            }
             yield createUser.hashPassword(password);
             return yield this.userRepository.save(createUser);
         });
