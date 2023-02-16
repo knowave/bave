@@ -27,6 +27,8 @@ export default class FeedController {
    * 이미지 s3 업로드
    */
   public uploadImage: RequestHandler = async (req: Request, res: Response) => {
+    console.log('request: ', req);
+    console.log('files: ', req.file);
     if (!req.file) {
       return res.status(STATUS_CODE.ERROR.BAD_REQUEST).send({ errorMessage: '업로드할 이미지가 없습니다.' });
     }

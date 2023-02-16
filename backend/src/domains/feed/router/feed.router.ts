@@ -16,7 +16,7 @@ class FeedRouter {
   }
 
   feedMainRouter(): Router {
-    this.feedRouter.post('/', upload.array('images', 5), this.feedController.createFeed);
+    this.feedRouter.post('/', this.feedController.createFeed);
     this.feedRouter.post('/upload', authCheck, upload.array('images', 5), this.feedController.uploadImage);
     return this.feedRouter;
   }
