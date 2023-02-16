@@ -13,21 +13,6 @@ export default class UserService {
    * 유저 생성
    */
   public async creatUser(createUserDto: CreateUserDto): Promise<Users> {
-    const { userId, email, username, password, confirmPassword } = createUserDto;
-    const user = await this.userRepository.findOneByUser(userId);
-
-    if (user.email === email) {
-      throw USER_EXCEPTION.EXIST_USER;
-    }
-
-    if (user.username === username) {
-      throw USER_EXCEPTION.EXIST_USERNAME;
-    }
-
-    if (password !== confirmPassword) {
-      throw USER_EXCEPTION.NOT_MATCH_PASSWORD;
-    }
-
     return await this.userRepository.creatUser(createUserDto);
   }
 

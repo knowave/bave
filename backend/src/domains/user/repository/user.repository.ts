@@ -14,13 +14,23 @@ export default class UserRepository {
    * 유저 생성
    */
   public async creatUser(createUserDto: CreateUserDto): Promise<Users> {
-    const { email, username, password } = createUserDto;
+    const { email, username, password, confirmPassword } = createUserDto;
 
     const createUser = await this.userRepository.create({
       email,
       username,
       password,
     });
+
+    const existUser = await this.userRepository.findOne({ where: { email } });
+
+    if (existUser !== null) {
+      throw USER_EXCEPTION.EXIST_USER;
+    }
+
+    if (password !== confirmPassword) {
+      throw USER_EXCEPTION.NOT_MATCH_PASSWORD;
+    }
 
     await createUser.hashPassword(password);
     return await this.userRepository.save(createUser);
