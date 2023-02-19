@@ -52,7 +52,7 @@ export class Users extends BaseEntity {
   @JoinColumn({ name: 'reply_id', referencedColumnName: 'replyId' })
   replyList: Reply[];
 
-  @OneToMany(() => Feed, (feed) => feed.user)
+  @OneToMany(() => Feed, (feed) => feed.userId)
   feedList: Feed[];
 
   async hashPassword(password: string): Promise<void> {

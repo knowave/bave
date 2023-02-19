@@ -29,7 +29,7 @@ export class Feed extends BaseEntity {
 
   @ManyToOne(() => Users, (user) => user.feedList)
   @JoinColumn({ name: 'user_id', referencedColumnName: 'userId' })
-  user: Users;
+  userId: number;
 
   @ManyToOne(() => Beach, (beach) => beach.feedList)
   @JoinColumn({ name: 'beach_id', referencedColumnName: 'beachId' })

@@ -18,8 +18,9 @@ class FeedRouter {
   feedMainRouter(): Router {
     this.feedRouter.get('/:beachId', this.feedController.getAllFeed);
     this.feedRouter.get('/one/:feedId', this.feedController.findOneByFeed);
-    this.feedRouter.post('/:beachId', authCheck, upload.array('images', 5), this.feedController.createFeed);
+    this.feedRouter.post('/:userId/:beachId', authCheck, upload.array('images', 5), this.feedController.createFeed);
     this.feedRouter.patch('/:feedId', authCheck, upload.array('images', 5), this.feedController.updateFeed);
+    this.feedRouter.delete('/:feedId', authCheck, this.feedController.deleteFeed);
     return this.feedRouter;
   }
 }

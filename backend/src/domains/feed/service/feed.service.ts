@@ -30,17 +30,25 @@ export default class FeedService {
   /**
    * 해수욕장 피드 작성
    */
-  public async createFeed(beachId: number, content: string, image?: string): Promise<Feed> {
+  public async createFeed(userId: number, beachId: number, content: string, image?: string): Promise<Feed> {
     const beach = await this.beachRepository.findOneByBeach(beachId);
 
-    return await this.feedRepository.createFeedByBeachId(beach.beachId, content, image);
+    return await this.feedRepository.createFeedByBeachId(userId, beach.beachId, content, image);
   }
 
   /**
-   * 해수욕장 피드 수
+   * 해수욕장 피드 수정
    */
   public async updateFeed(feedId: number, updateFeedDto: UpdateFeedDto) {
     await this.feedRepository.findOneByFeed(feedId);
     return await this.feedRepository.updateFeed(feedId, updateFeedDto);
+  }
+
+  /**
+   * 해수욕장 피드 삭제
+   */
+  public async deleteFeed(feedId: number): Promise<void> {
+    await this.feedRepository.findOneByFeed(feedId);
+    await this.feedRepository.deleteFeed(feedId);
   }
 }

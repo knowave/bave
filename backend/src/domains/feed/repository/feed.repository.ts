@@ -51,10 +51,11 @@ export default class FeedRepository {
   /**
    * 피드 작성
    */
-  public async createFeedByBeachId(beachId: number, content: string, image?: string): Promise<Feed> {
+  public async createFeedByBeachId(userId: number, beachId: number, content: string, image?: string): Promise<Feed> {
     const feed = this.feedRepository.create({
       content,
       beachId,
+      userId,
       image,
     });
 
@@ -68,5 +69,12 @@ export default class FeedRepository {
     const { beachId, content, image } = updateFeedDto;
 
     return await this.feedRepository.update(feedId, { content, image, beachId });
+  }
+
+  /**
+   * 해수욕장 피드 삭제
+   */
+  public async deleteFeed(feedId: number): Promise<void> {
+    await this.feedRepository.delete(feedId);
   }
 }

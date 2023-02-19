@@ -43,10 +43,10 @@ export default class FeedController {
   public createFeed: RequestHandler = async (req: Request, res: Response) => {
     const imageFile = req.file?.filename;
     const { content } = req.body;
-    const { beachId } = req.params;
+    const { userId, beachId } = req.params;
 
     try {
-      const feed = await this.feedService.createFeed(Number(beachId), content, imageFile);
+      const feed = await this.feedService.createFeed(Number(userId), Number(beachId), content, imageFile);
       res.status(STATUS_CODE.SUCCESS.CREATED).json({ file: feed });
     } catch (error) {
       console.log(error);
@@ -66,6 +66,21 @@ export default class FeedController {
       res.status(STATUS_CODE.SUCCESS.OK).json({ data: feed });
     } catch (error) {
       console.log('해수욕장 피드 수정 Error: ', error);
+      res.status(STATUS_CODE.ERROR.BAD_REQUEST).send({ errorMessage: error });
+    }
+  };
+
+  /**
+   * 해수욕장 피드 삭제
+   */
+  public deleteFeed: RequestHandler = async (req: Request, res: Response) => {
+    const { feedId } = req.params;
+
+    try {
+      const feed = await this.feedService.deleteFeed(Number(feedId));
+      res.status(STATUS_CODE.SUCCESS.OK).json(feed);
+    } catch (error) {
+      console.log('해수욕장 피드 삭제 Error: ', error);
       res.status(STATUS_CODE.ERROR.BAD_REQUEST).send({ errorMessage: error });
     }
   };
