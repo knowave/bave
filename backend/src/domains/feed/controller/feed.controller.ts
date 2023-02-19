@@ -12,8 +12,7 @@ export default class FeedController {
   public createFeed: RequestHandler = async (req: Request, res: Response) => {
     const imageFile = req.file?.filename;
     const { content } = req.body;
-    const beachId = req.params;
-    console.log(req);
+    const { beachId } = req.params;
 
     try {
       const feed = await this.feedService.createFeed(Number(beachId), content, imageFile);
