@@ -6,5 +6,5 @@ export type IUser = {
 };
 
 export type Beach = {
-  beachId?: number;
+  beachId: number;
 };
