@@ -48,7 +48,6 @@ export class AuthController {
   public signOut: RequestHandler = async (req: Request, res: Response) => {
     try {
       const user = req.users;
-      // console.log(Number(user?.userId));
       await this.authService.removeRefreshToken(Number(user?.userId));
       return res.status(STATUS_CODE.SUCCESS.OK).send({ message: '로그아웃 완료' });
     } catch (error) {
