@@ -3,6 +3,7 @@ import { Beach } from '../../beach/entity/beach.entity';
 import { Feed } from '../entity/feed.entity';
 import { BEACH_EXCEPTION } from '../../../exception/error-code';
 import BeachRepository from '../../beach/repository/beach.repository';
+import { UpdateFeedDto } from '../dto/update-feed.dto';
 
 export default class FeedService {
   private feedRepository: FeedRepository;
@@ -33,5 +34,13 @@ export default class FeedService {
     const beach = await this.beachRepository.findOneByBeach(beachId);
 
     return await this.feedRepository.createFeedByBeachId(beach.beachId, content, image);
+  }
+
+  /**
+   * 해수욕장 피드 수
+   */
+  public async updateFeed(feedId: number, updateFeedDto: UpdateFeedDto) {
+    await this.feedRepository.findOneByFeed(feedId);
+    return await this.feedRepository.updateFeed(feedId, updateFeedDto);
   }
 }

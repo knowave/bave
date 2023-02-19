@@ -3,6 +3,7 @@ import { Feed } from '../entity/feed.entity';
 import connectionOptions from '../../../database/type-orm.config';
 import { Beach } from '../../beach/entity/beach.entity';
 import { FEED_EXCEPTION } from '../../../exception/error-code';
+import { UpdateFeedDto } from '../dto/update-feed.dto';
 
 export default class FeedRepository {
   private feedRepository: Repository<Feed>;
@@ -38,7 +39,7 @@ export default class FeedRepository {
    * 특정 피드 조회
    */
   public async findOneByFeed(feedId: number): Promise<Feed> {
-    const feed = await this.feedRepository.findOne({ where: { feedId } });
+    const feed = await this.feedRepository.findOne({ select: ['feedId', 'content', 'image', 'beachId', 'createdAt'], where: { feedId } });
 
     if (!feed) {
       throw FEED_EXCEPTION.NOT_FOUND_FEED;
@@ -58,5 +59,14 @@ export default class FeedRepository {
     });
 
     return await this.feedRepository.save(feed);
+  }
+
+  /**
+   * 해수욕장 피드 수정
+   */
+  public async updateFeed(feedId: number, updateFeedDto: UpdateFeedDto) {
+    const { beachId, content, image } = updateFeedDto;
+
+    return await this.feedRepository.update(feedId, { content, image, beachId });
   }
 }

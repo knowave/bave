@@ -2,6 +2,7 @@ import FeedService from '../service/feed.service';
 import { Request, RequestHandler, Response } from 'express';
 import { STATUS_CODE } from '../../../exception/status-code';
 import { Beach } from '../../beach/entity/beach.entity';
+import { UpdateFeedDto } from '../dto/update-feed.dto';
 
 export default class FeedController {
   constructor(private feedService: FeedService) {}
@@ -49,6 +50,22 @@ export default class FeedController {
       res.status(STATUS_CODE.SUCCESS.CREATED).json({ file: feed });
     } catch (error) {
       console.log(error);
+      res.status(STATUS_CODE.ERROR.BAD_REQUEST).send({ errorMessage: error });
+    }
+  };
+
+  /**
+   * 해수욕장 피드 수정
+   */
+  public updateFeed: RequestHandler = async (req: Request, res: Response) => {
+    const { feedId } = req.params;
+    const updateFeedDto: UpdateFeedDto = req.body;
+
+    try {
+      const feed = await this.feedService.updateFeed(Number(feedId), updateFeedDto);
+      res.status(STATUS_CODE.SUCCESS.OK).json({ data: feed });
+    } catch (error) {
+      console.log('해수욕장 피드 수정 Error: ', error);
       res.status(STATUS_CODE.ERROR.BAD_REQUEST).send({ errorMessage: error });
     }
   };
