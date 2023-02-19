@@ -26,7 +26,7 @@ export default class BeachRepository {
   /**
    * 특정 해수욕장 조회
    */
-  public async findOneByBeach(beachId: number): Promise<Beach | null> {
+  public async findOneByBeach(beachId: number): Promise<Beach> {
     const beach = await this.beachRepository.findOne({ where: { beachId } });
 
     if (!beach) {

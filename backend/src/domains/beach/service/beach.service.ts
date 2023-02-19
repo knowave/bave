@@ -17,7 +17,7 @@ export default class BeachService {
   /**
    * 특정 해수욕장 조회
    */
-  public async findOneByBeach(beachId: number): Promise<Beach | null> {
+  public async findOneByBeach(beachId: number): Promise<Beach> {
     return await this.beachRepository.findOneByBeach(beachId);
   }
 }
