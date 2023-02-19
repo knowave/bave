@@ -16,6 +16,7 @@ class FeedRouter {
   }
 
   feedMainRouter(): Router {
+    this.feedRouter.get('/:beachId', this.feedController.getAllFeed);
     this.feedRouter.post('/:beachId', authCheck, upload.array('images', 5), this.feedController.createFeed);
     return this.feedRouter;
   }

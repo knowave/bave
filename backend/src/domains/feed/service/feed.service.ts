@@ -13,6 +13,13 @@ export default class FeedService {
   }
 
   /**
+   * 해수욕장 피드 전체 조회
+   */
+  public async getAllFeed(query: any, beachId: number): Promise<Feed[]> {
+    return await this.feedRepository.getAllFeed(query, beachId);
+  }
+
+  /**
    * 해수욕장 피드 작성
    */
   public async createFeed(beachId: number, content: string, image?: string): Promise<Feed> {

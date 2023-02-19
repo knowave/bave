@@ -7,6 +7,21 @@ export default class FeedController {
   constructor(private feedService: FeedService) {}
 
   /**
+   * 해수욕장 피드 전체 조회
+   */
+  public getAllFeed: RequestHandler = async (req: Request, res: Response) => {
+    const query = req.query;
+    const { beachId } = req.params;
+    try {
+      const data = await this.feedService.getAllFeed(query, Number(beachId));
+      return res.status(STATUS_CODE.SUCCESS.OK).json(data);
+    } catch (error) {
+      console.log('해수욕장 피드 전체 조회 Error: ', error);
+      return res.status(STATUS_CODE.ERROR.BAD_REQUEST).send({ errorMessage: error });
+    }
+  };
+
+  /**
    * 피드 생성
    */
   public createFeed: RequestHandler = async (req: Request, res: Response) => {
