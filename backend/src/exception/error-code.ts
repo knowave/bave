@@ -1,7 +1,7 @@
 export const BEACH_EXCEPTION = {
   NOT_FOUND_BEACHES: {
     code: 'NOT_FOUND_BEACHES',
-    message: '전체 해수욕장이 존재하지 않습니다.',
+    message: '전체 해수욕장을 불러올 수 없습니다.',
   },
   NOT_FOUND_BEACH: {
     code: 'NOT_FOUND_BEACH',
@@ -29,6 +29,10 @@ export const USER_EXCEPTION = {
 };
 
 export const FEED_EXCEPTION = {
+  NOT_FOUND_FEEDS: {
+    code: 'NOT_FOUND_FEEDS',
+    message: '전체 피드를 불러올 수 없습니다.',
+  },
   NOT_FOUND_FEED: {
     code: 'NOT_FOUND_FEED',
     message: '피드를 찾을 수 없습니다.',
