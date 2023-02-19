@@ -16,7 +16,7 @@ class FeedRouter {
     }
     feedMainRouter() {
         this.feedRouter.post('/', upload_middleware_1.upload.array('images', 5), this.feedController.createFeed);
-        this.feedRouter.post('/upload', auth_check_middleware_1.authCheck, upload_middleware_1.upload.array('images', 5), this.feedController.uploadImage);
+        this.feedRouter.post('/upload', auth_check_middleware_1.authCheck, upload_middleware_1.upload.array('images', 5), this.feedController.createFeed);
         return this.feedRouter;
     }
 }

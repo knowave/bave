@@ -1,7 +1,7 @@
 import FeedService from '../service/feed.service';
 import FeedController from '../controller/feed.controller';
 import { Router } from 'express';
-import { imageUpload } from '../middleware/upload.middleware';
+import { upload } from '../middleware/upload.middleware';
 import { authCheck } from '../../auth/middlewares/auth-check.middleware';
 
 class FeedRouter {
@@ -16,8 +16,7 @@ class FeedRouter {
   }
 
   feedMainRouter(): Router {
-    this.feedRouter.post('/', this.feedController.createFeed);
-    this.feedRouter.post('/upload', authCheck, imageUpload.single('images'), this.feedController.uploadImage);
+    this.feedRouter.post('/', authCheck, upload.array('images', 5), this.feedController.createFeed);
     return this.feedRouter;
   }
 }
