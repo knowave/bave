@@ -22,6 +22,21 @@ export default class FeedController {
   };
 
   /**
+   * 특정 피드 조회
+   */
+  public findOneByFeed: RequestHandler = async (req: Request, res: Response) => {
+    const { feedId } = req.params;
+
+    try {
+      const feed = await this.feedService.findOneByFeed(Number(feedId));
+      res.status(STATUS_CODE.SUCCESS.OK).json({ data: feed });
+    } catch (error) {
+      console.log('특정 피드 조회 Error: ', error);
+      res.status(STATUS_CODE.ERROR.BAD_REQUEST).send({ errorMessage: error });
+    }
+  };
+
+  /**
    * 피드 생성
    */
   public createFeed: RequestHandler = async (req: Request, res: Response) => {

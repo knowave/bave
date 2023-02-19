@@ -20,6 +20,13 @@ export default class FeedService {
   }
 
   /**
+   * 특정 피드 조회
+   */
+  public async findOneByFeed(feedId: number): Promise<Feed> {
+    return await this.feedRepository.findOneByFeed(feedId);
+  }
+
+  /**
    * 해수욕장 피드 작성
    */
   public async createFeed(beachId: number, content: string, image?: string): Promise<Feed> {

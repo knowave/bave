@@ -35,6 +35,19 @@ export default class FeedRepository {
   }
 
   /**
+   * 특정 피드 조회
+   */
+  public async findOneByFeed(feedId: number): Promise<Feed> {
+    const feed = await this.feedRepository.findOne({ where: { feedId } });
+
+    if (!feed) {
+      throw FEED_EXCEPTION.NOT_FOUND_FEED;
+    }
+
+    return feed;
+  }
+
+  /**
    * 피드 작성
    */
   public async createFeedByBeachId(beachId: number, content: string, image?: string): Promise<Feed> {
