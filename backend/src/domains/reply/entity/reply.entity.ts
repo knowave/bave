@@ -24,5 +24,5 @@ export class Reply extends BaseEntity {
 
   @ManyToOne(() => Feed, (feed) => feed.replyList)
   @JoinColumn({ name: 'feed_id', referencedColumnName: 'feedId' })
-  feed: Feed;
+  feedId: string;
 }
