@@ -18,6 +18,7 @@ class LikeRouter {
   likeMainRouter(): Router {
     this.likeRouter.post('/feed/:feedId', authCheck, userMiddleware, this.likeController.likeByFeed);
     this.likeRouter.post('/reply/:replyId', authCheck, userMiddleware, this.likeController.likeByReply);
+    this.likeRouter.post('/beach/:beachId', authCheck, userMiddleware, this.likeController.likeByBeach);
     return this.likeRouter;
   }
 }

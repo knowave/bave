@@ -50,4 +50,27 @@ export default class LikeController {
       res.status(STATUS_CODE.ERROR.BAD_REQUEST).send({ errorMessage: error });
     }
   };
+
+  /**
+   * 해수욕장 좋아요 / 취소
+   */
+  public likeByBeach: RequestHandler = async (req: Request, res: Response) => {
+    const { beachId } = req.params;
+    const userId = req.users?.userId;
+
+    try {
+      const like = await this.likeService.findOneLikeByBeach(Number(userId), Number(beachId));
+
+      if (!like) {
+        await this.likeService.createLikeByBeach(Number(userId), Number(beachId));
+        res.status(STATUS_CODE.SUCCESS.CREATED).json({ data: true });
+      } else {
+        await this.likeService.cancelLikeByBeach(Number(userId), Number(beachId));
+        res.status(STATUS_CODE.SUCCESS.OK).json({ data: false });
+      }
+    } catch (error) {
+      console.log('해수욕장 좋아요 / 취소 Error: ', error);
+      res.status(STATUS_CODE.ERROR.BAD_REQUEST).send({ errorMessage: error });
+    }
+  };
 }
