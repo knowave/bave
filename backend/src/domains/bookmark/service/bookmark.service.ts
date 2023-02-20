@@ -1,16 +1,13 @@
 import FeedBookmarkRepository from '../repository/feed-bookmark.repository';
 import { Bookmark } from '../entity/bookmark.entity';
-import ReplyBookmarkRepository from '../repository/reply-bookmark.repository';
 import BeachBookmarkRepository from '../repository/beach-bookmark.repository';
 
 export default class BookmarkService {
   private feedBookmarkRepository: FeedBookmarkRepository;
-  private replyBookmarkRepository: ReplyBookmarkRepository;
   private beachBookmarkRepository: BeachBookmarkRepository;
 
   constructor() {
     this.feedBookmarkRepository = new FeedBookmarkRepository();
-    this.replyBookmarkRepository = new ReplyBookmarkRepository();
     this.beachBookmarkRepository = new BeachBookmarkRepository();
   }
 
