@@ -2,7 +2,7 @@ import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColum
 import { BaseEntity } from '../../../base/base.entity';
 import { Users } from '../../user/entity/user.entity';
 import { Reply } from '../../reply/entity/reply.entity';
-import { Like } from '../../like/entity/like.entity';
+import { Bookmark } from '../../bookmark/entity/bookmark.entity';
 import { Beach } from '../../beach/entity/beach.entity';
 
 @Entity()
@@ -39,7 +39,7 @@ export class Feed extends BaseEntity {
   @JoinColumn({ name: 'reply_id', referencedColumnName: 'replyId' })
   replyList: Reply[];
 
-  @OneToMany(() => Like, (like) => like.feedId)
+  @OneToMany(() => Bookmark, (like) => like.feedId)
   @JoinColumn({ name: 'like_id', referencedColumnName: 'likeId' })
-  likeList: Like[];
+  bookmarkList: Bookmark[];
 }

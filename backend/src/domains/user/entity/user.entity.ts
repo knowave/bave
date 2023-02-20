@@ -1,6 +1,6 @@
 import { BeforeUpdate, Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { BaseEntity } from '../../../base/base.entity';
-import { Like } from '../../like/entity/like.entity';
+import { Bookmark } from '../../bookmark/entity/bookmark.entity';
 import * as bcrypt from 'bcrypt';
 import { Reply } from '../../reply/entity/reply.entity';
 import { Feed } from '../../feed/entity/feed.entity';
@@ -44,9 +44,9 @@ export class Users extends BaseEntity {
   })
   jwtToken!: string | null;
 
-  @OneToMany(() => Like, (like) => like.userId)
+  @OneToMany(() => Bookmark, (like) => like.userId)
   @JoinColumn({ name: 'like_id', referencedColumnName: 'like_id' })
-  likeList: Like[];
+  bookmarkList: Bookmark[];
 
   @OneToMany(() => Reply, (reply) => reply.userId)
   @JoinColumn({ name: 'reply_id', referencedColumnName: 'replyId' })

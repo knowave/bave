@@ -1,25 +1,25 @@
 import { Repository } from 'typeorm';
-import { Like } from '../entity/like.entity';
+import { Bookmark } from '../entity/bookmark.entity';
 import connectionOptions from '../../../database/type-orm.config';
 
-export default class FeedLikeRepository {
-  private feedLikeRepository: Repository<Like>;
+export default class FeedBookmarkRepository {
+  private feedLikeRepository: Repository<Bookmark>;
 
   constructor() {
-    this.feedLikeRepository = connectionOptions.getRepository(Like);
+    this.feedLikeRepository = connectionOptions.getRepository(Bookmark);
   }
 
   /**
    * 피드 좋아요 조회
    */
-  public async findOneLikeByFeed(userId: number, feedId: number): Promise<Like | null> {
+  public async findOneBookmarkByFeed(userId: number, feedId: number): Promise<Bookmark | null> {
     return await this.feedLikeRepository.findOne({ where: { userId, feedId } });
   }
 
   /**
    * 피드 좋아요
    */
-  public async createLikeByFeed(userId: number, feedId: number): Promise<Like> {
+  public async createBookmarkByFeed(userId: number, feedId: number): Promise<Bookmark> {
     const createLike = await this.feedLikeRepository.create({
       userId,
       feedId,
@@ -31,7 +31,7 @@ export default class FeedLikeRepository {
   /**
    * 피드 좋아요 취소
    */
-  public async cancelLikeByFeed(userId: number, feedId: number) {
+  public async cancelBookmarkByFeed(userId: number, feedId: number) {
     return await this.feedLikeRepository.delete({ userId, feedId });
   }
 }

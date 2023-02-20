@@ -1,25 +1,25 @@
 import { Repository } from 'typeorm';
-import { Like } from '../entity/like.entity';
+import { Bookmark } from '../entity/bookmark.entity';
 import connectionOptions from '../../../database/type-orm.config';
 
-export default class BeachLikeRepository {
-  private beachLikeRepository: Repository<Like>;
+export default class BeachBookmarkRepository {
+  private beachLikeRepository: Repository<Bookmark>;
 
   constructor() {
-    this.beachLikeRepository = connectionOptions.getRepository(Like);
+    this.beachLikeRepository = connectionOptions.getRepository(Bookmark);
   }
 
   /**
    * 해수욕장 좋아요 조회
    */
-  public async findOneLikeByBeach(userId: number, beachId: number): Promise<Like | null> {
+  public async findOneBookmarkByBeach(userId: number, beachId: number): Promise<Bookmark | null> {
     return await this.beachLikeRepository.findOne({ where: { userId, beachId } });
   }
 
   /**
    * 해수욕장 좋아요
    */
-  public async createLikeByBeach(userId: number, beachId: number): Promise<Like> {
+  public async createBookmarkByBeach(userId: number, beachId: number): Promise<Bookmark> {
     const createLike = await this.beachLikeRepository.create({
       userId,
       beachId,
@@ -31,7 +31,7 @@ export default class BeachLikeRepository {
   /**
    * 해수욕장 좋아요 취소
    */
-  public async cancelLikeByBeach(userId: number, beachId: number) {
+  public async cancelBookmarkByBeach(userId: number, beachId: number) {
     return await this.beachLikeRepository.delete({ userId, beachId });
   }
 }

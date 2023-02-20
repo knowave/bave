@@ -1,25 +1,25 @@
-import LikeService from '../service/like.service';
+import BookmarkService from '../service/bookmark.service';
 import { Request, RequestHandler, Response } from 'express';
 import { STATUS_CODE } from '../../../exception/status-code';
 
-export default class LikeController {
-  constructor(private likeService: LikeService) {}
+export default class BookmarkController {
+  constructor(private bookmarkService: BookmarkService) {}
 
   /**
    * 피드 좋아요 / 취소
    */
-  public likeByFeed: RequestHandler = async (req: Request, res: Response) => {
+  public bookmarkByFeed: RequestHandler = async (req: Request, res: Response) => {
     const { feedId } = req.params;
     const userId = req.users?.userId;
 
     try {
-      const like = await this.likeService.findOneByLike(Number(userId), Number(feedId));
+      const like = await this.bookmarkService.findOneByBookmark(Number(userId), Number(feedId));
 
       if (!like) {
-        await this.likeService.createLikeByFeed(Number(userId), Number(feedId));
+        await this.bookmarkService.createBookmarkByFeed(Number(userId), Number(feedId));
         res.status(STATUS_CODE.SUCCESS.CREATED).json({ data: true });
       } else {
-        await this.likeService.cancelLikeByFeed(Number(userId), Number(feedId));
+        await this.bookmarkService.cancelBookmarkByFeed(Number(userId), Number(feedId));
         res.status(STATUS_CODE.SUCCESS.OK).json({ data: false });
       }
     } catch (error) {
@@ -31,18 +31,18 @@ export default class LikeController {
   /**
    * 댓글 좋아요 / 취소
    */
-  public likeByReply: RequestHandler = async (req: Request, res: Response) => {
+  public bookmarkByReply: RequestHandler = async (req: Request, res: Response) => {
     const { replyId } = req.params;
     const userId = req.users?.userId;
 
     try {
-      const like = await this.likeService.findOneLikeByReply(Number(userId), Number(replyId));
+      const like = await this.bookmarkService.findOneBookmarkByReply(Number(userId), Number(replyId));
 
       if (!like) {
-        await this.likeService.createLikeByReply(Number(userId), Number(replyId));
+        await this.bookmarkService.createBookmarkByReply(Number(userId), Number(replyId));
         res.status(STATUS_CODE.SUCCESS.CREATED).json({ data: true });
       } else {
-        await this.likeService.cancelLikeByReply(Number(userId), Number(replyId));
+        await this.bookmarkService.cancelBookmarkByReply(Number(userId), Number(replyId));
         res.status(STATUS_CODE.SUCCESS.OK).json({ data: false });
       }
     } catch (error) {
@@ -54,18 +54,18 @@ export default class LikeController {
   /**
    * 해수욕장 좋아요 / 취소
    */
-  public likeByBeach: RequestHandler = async (req: Request, res: Response) => {
+  public bookmarkByBeach: RequestHandler = async (req: Request, res: Response) => {
     const { beachId } = req.params;
     const userId = req.users?.userId;
 
     try {
-      const like = await this.likeService.findOneLikeByBeach(Number(userId), Number(beachId));
+      const like = await this.bookmarkService.findOneBookmarkByBeach(Number(userId), Number(beachId));
 
       if (!like) {
-        await this.likeService.createLikeByBeach(Number(userId), Number(beachId));
+        await this.bookmarkService.createBookmarkByBeach(Number(userId), Number(beachId));
         res.status(STATUS_CODE.SUCCESS.CREATED).json({ data: true });
       } else {
-        await this.likeService.cancelLikeByBeach(Number(userId), Number(beachId));
+        await this.bookmarkService.cancelBookmarkByBeach(Number(userId), Number(beachId));
         res.status(STATUS_CODE.SUCCESS.OK).json({ data: false });
       }
     } catch (error) {

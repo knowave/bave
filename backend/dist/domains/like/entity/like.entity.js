@@ -34,7 +34,7 @@ __decorate([
     __metadata("design:type", feed_entity_1.Feed)
 ], Like.prototype, "feed", void 0);
 Like = __decorate([
-    (0, typeorm_1.Entity)('like')
+    (0, typeorm_1.Entity)('bookmark')
 ], Like);
 exports.Like = Like;
-//# sourceMappingURL=like.entity.js.map
+//# sourceMappingURL=bookmark.entity.js.map

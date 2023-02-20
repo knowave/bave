@@ -1,7 +1,7 @@
 import { Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { BaseEntity } from '../../../base/base.entity';
 import { Feed } from '../../feed/entity/feed.entity';
-import { Like } from '../../like/entity/like.entity';
+import { Bookmark } from '../../bookmark/entity/bookmark.entity';
 
 @Entity('beach')
 export class Beach extends BaseEntity {
@@ -50,7 +50,7 @@ export class Beach extends BaseEntity {
   @JoinColumn({ name: 'feed_id', referencedColumnName: 'feedId' })
   feedList: Feed[];
 
-  @OneToMany(() => Like, (like) => like.beachId)
+  @OneToMany(() => Bookmark, (like) => like.beachId)
   @JoinColumn({ name: 'like_id', referencedColumnName: 'likeId' })
-  likeList: Like[];
+  bookmarkList: Bookmark[];
 }

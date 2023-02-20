@@ -5,27 +5,27 @@ import { Feed } from '../../feed/entity/feed.entity';
 import { Reply } from '../../reply/entity/reply.entity';
 import { Beach } from '../../beach/entity/beach.entity';
 
-@Entity('like')
-export class Like extends BaseEntity {
+@Entity('bookmark')
+export class Bookmark extends BaseEntity {
   @PrimaryGeneratedColumn({
-    name: 'like_id',
+    name: 'bookmark_id',
     comment: '좋아요 ID',
   })
-  likeId: number;
+  bookmarkId: number;
 
-  @ManyToOne(() => Users, (user) => user.likeList)
+  @ManyToOne(() => Users, (user) => user.bookmarkList)
   @JoinColumn({ name: 'user_id', referencedColumnName: 'userId' })
   userId: number;
 
-  @ManyToOne(() => Feed, (feed) => feed.likeList)
+  @ManyToOne(() => Feed, (feed) => feed.bookmarkList)
   @JoinColumn({ name: 'feed_id', referencedColumnName: 'feedId' })
   feedId: number;
 
-  @ManyToOne(() => Reply, (reply) => reply.likeList)
+  @ManyToOne(() => Reply, (reply) => reply.bookmarkList)
   @JoinColumn({ name: 'reply_id', referencedColumnName: 'replyId' })
   replyId: number;
 
-  @ManyToOne(() => Beach, (beach) => beach.likeList)
+  @ManyToOne(() => Beach, (beach) => beach.bookmarkList)
   @JoinColumn({ name: 'beach_id', referencedColumnName: 'beachId' })
   beachId: number;
 }

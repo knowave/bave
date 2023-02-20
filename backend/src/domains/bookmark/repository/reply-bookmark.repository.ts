@@ -1,25 +1,25 @@
 import { Repository } from 'typeorm';
-import { Like } from '../entity/like.entity';
+import { Bookmark } from '../entity/bookmark.entity';
 import connectionOptions from '../../../database/type-orm.config';
 
-export default class ReplyLikeRepository {
-  private replyRepository: Repository<Like>;
+export default class ReplyBookmarkRepository {
+  private replyRepository: Repository<Bookmark>;
 
   constructor() {
-    this.replyRepository = connectionOptions.getRepository(Like);
+    this.replyRepository = connectionOptions.getRepository(Bookmark);
   }
 
   /**
    * 댓글 좋아요 조회
    */
-  public async findOneLikeByReply(userId: number, replyId: number): Promise<Like | null> {
+  public async findOneBookmarkByReply(userId: number, replyId: number): Promise<Bookmark | null> {
     return await this.replyRepository.findOne({ where: { userId, replyId } });
   }
 
   /**
    * 댓글 좋아요
    */
-  public async createLikeByReply(userId: number, replyId: number): Promise<Like> {
+  public async createBookmarkByReply(userId: number, replyId: number): Promise<Bookmark> {
     const createLike = await this.replyRepository.create({
       userId,
       replyId,
@@ -31,7 +31,7 @@ export default class ReplyLikeRepository {
   /**
    * 댓글 좋아요 취소
    */
-  public async cancelLikeByReply(userId: number, replyId: number) {
+  public async cancelBookmarkByReply(userId: number, replyId: number) {
     return await this.replyRepository.delete({ userId, replyId });
   }
 }
