@@ -24,7 +24,8 @@ export default class ReplyController {
    * 특정 피드에 댓글 작성
    */
   public createReplyByFeed: RequestHandler = async (req: Request, res: Response) => {
-    const { userId, feedId } = req.params;
+    const { feedId } = req.params;
+    const userId = req.users?.userId;
     const { contents } = req.body;
 
     try {
