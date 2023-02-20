@@ -48,7 +48,7 @@ export class Users extends BaseEntity {
   @JoinColumn({ name: 'like_id', referencedColumnName: 'like_id' })
   likeList: Like[];
 
-  @OneToMany(() => Reply, (reply) => reply.user)
+  @OneToMany(() => Reply, (reply) => reply.userId)
   @JoinColumn({ name: 'reply_id', referencedColumnName: 'replyId' })
   replyList: Reply[];
 
