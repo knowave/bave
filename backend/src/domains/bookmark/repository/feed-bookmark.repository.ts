@@ -10,14 +10,14 @@ export default class FeedBookmarkRepository {
   }
 
   /**
-   * 피드 좋아요 조회
+   * 피드 북마크 조회
    */
   public async findOneBookmarkByFeed(userId: number, feedId: number): Promise<Bookmark | null> {
     return await this.feedLikeRepository.findOne({ where: { userId, feedId } });
   }
 
   /**
-   * 피드 좋아요
+   * 피드 북마크
    */
   public async createBookmarkByFeed(userId: number, feedId: number): Promise<Bookmark> {
     const createLike = await this.feedLikeRepository.create({
@@ -29,7 +29,7 @@ export default class FeedBookmarkRepository {
   }
 
   /**
-   * 피드 좋아요 취소
+   * 피드 북마크 취소
    */
   public async cancelBookmarkByFeed(userId: number, feedId: number) {
     return await this.feedLikeRepository.delete({ userId, feedId });

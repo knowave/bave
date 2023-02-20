@@ -17,7 +17,6 @@ class BookmarkRouter {
 
   bookmarkMainRouter(): Router {
     this.bookmarkRouter.post('/feed/:feedId', authCheck, userMiddleware, this.bookmarkController.bookmarkByFeed);
-    this.bookmarkRouter.post('/reply/:replyId', authCheck, userMiddleware, this.bookmarkController.bookmarkByReply);
     this.bookmarkRouter.post('/beach/:beachId', authCheck, userMiddleware, this.bookmarkController.bookmarkByBeach);
     return this.bookmarkRouter;
   }

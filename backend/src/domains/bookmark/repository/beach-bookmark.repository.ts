@@ -10,14 +10,14 @@ export default class BeachBookmarkRepository {
   }
 
   /**
-   * 해수욕장 좋아요 조회
+   * 해수욕장 북마크 조회
    */
   public async findOneBookmarkByBeach(userId: number, beachId: number): Promise<Bookmark | null> {
     return await this.beachLikeRepository.findOne({ where: { userId, beachId } });
   }
 
   /**
-   * 해수욕장 좋아요
+   * 해수욕장 북마크
    */
   public async createBookmarkByBeach(userId: number, beachId: number): Promise<Bookmark> {
     const createLike = await this.beachLikeRepository.create({
@@ -29,7 +29,7 @@ export default class BeachBookmarkRepository {
   }
 
   /**
-   * 해수욕장 좋아요 취소
+   * 해수욕장 북마크 취소
    */
   public async cancelBookmarkByBeach(userId: number, beachId: number) {
     return await this.beachLikeRepository.delete({ userId, beachId });
