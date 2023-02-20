@@ -20,7 +20,7 @@ export class Reply extends BaseEntity {
 
   @ManyToOne(() => Users, (user) => user.replyList)
   @JoinColumn({ name: 'user_id', referencedColumnName: 'userId' })
-  userId: string;
+  userId: number;
 
   @ManyToOne(() => Feed, (feed) => feed.replyList)
   @JoinColumn({ name: 'feed_id', referencedColumnName: 'feedId' })
