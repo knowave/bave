@@ -51,7 +51,7 @@ export default class FeedController {
       const feed = await this.feedService.createFeed(Number(userId), Number(beachId), content, image);
       res.status(STATUS_CODE.SUCCESS.CREATED).json({ file: feed });
     } catch (error) {
-      console.log(error);
+      console.log('피드 생성 Error: ', error);
       res.status(STATUS_CODE.ERROR.BAD_REQUEST).send({ errorMessage: error });
     }
   };

@@ -33,4 +33,17 @@ export default class ReplyRepository {
 
     return replies;
   }
+
+  /**
+   * 특정 피드에 댓글 작성
+   */
+  public async createReplyByFeed(userId: number, feedId: number, contents: string): Promise<Reply> {
+    const reply = await this.replyRepository.create({
+      userId,
+      feedId,
+      contents,
+    });
+
+    return await this.replyRepository.save(reply);
+  }
 }

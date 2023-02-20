@@ -1,6 +1,7 @@
 import ReplyService from '../service/reply.service';
 import ReplyController from '../controller/reply.controller';
 import { Router } from 'express';
+import { authCheck } from '../../auth/middlewares/auth-check.middleware';
 
 class ReplyRouter {
   private replyService: ReplyService;
@@ -15,6 +16,7 @@ class ReplyRouter {
 
   replyMainRouter(): Router {
     this.replyRouter.get('/:feedId', this.replyController.getAllReplyByFeed);
+    this.replyRouter.post('/:userId/:feedId', authCheck, this.replyController.createReplyByFeed);
     return this.replyRouter;
   }
 }

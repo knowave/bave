@@ -19,4 +19,20 @@ export default class ReplyController {
       return res.status(STATUS_CODE.ERROR.BAD_REQUEST).send({ errorMessage: error });
     }
   };
+
+  /**
+   * 특정 피드에 댓글 작성
+   */
+  public createReplyByFeed: RequestHandler = async (req: Request, res: Response) => {
+    const { userId, feedId } = req.params;
+    const { contents } = req.body;
+
+    try {
+      const reply = await this.replyService.createReplyByFeed(Number(userId), Number(feedId), contents);
+      res.status(STATUS_CODE.SUCCESS.CREATED).json({ data: reply });
+    } catch (error) {
+      console.log('특정 피드에 댓글 작성 Error: ', error);
+      res.status(STATUS_CODE.ERROR.BAD_REQUEST).send({ errorMessage: error });
+    }
+  };
 }
