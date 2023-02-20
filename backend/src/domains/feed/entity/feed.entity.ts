@@ -39,7 +39,7 @@ export class Feed extends BaseEntity {
   @JoinColumn({ name: 'reply_id', referencedColumnName: 'replyId' })
   replyList: Reply[];
 
-  @OneToMany(() => Like, (like) => like.feed)
+  @OneToMany(() => Like, (like) => like.feedId)
   @JoinColumn({ name: 'like_id', referencedColumnName: 'likeId' })
   likeList: Like[];
 }

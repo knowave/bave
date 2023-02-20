@@ -44,7 +44,7 @@ export class Users extends BaseEntity {
   })
   jwtToken!: string | null;
 
-  @OneToMany(() => Like, (like) => like.user)
+  @OneToMany(() => Like, (like) => like.userId)
   @JoinColumn({ name: 'like_id', referencedColumnName: 'like_id' })
   likeList: Like[];
 

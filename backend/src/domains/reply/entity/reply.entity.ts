@@ -1,7 +1,8 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { BaseEntity } from '../../../base/base.entity';
 import { Users } from '../../user/entity/user.entity';
 import { Feed } from '../../feed/entity/feed.entity';
+import { Like } from '../../like/entity/like.entity';
 
 @Entity()
 export class Reply extends BaseEntity {
@@ -25,4 +26,8 @@ export class Reply extends BaseEntity {
   @ManyToOne(() => Feed, (feed) => feed.replyList)
   @JoinColumn({ name: 'feed_id', referencedColumnName: 'feedId' })
   feedId: number;
+
+  @OneToMany(() => Like, (like) => like.replyId)
+  @JoinColumn({ name: 'like_id', referencedColumnName: 'likeId' })
+  likeList: Like[];
 }
