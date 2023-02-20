@@ -41,12 +41,16 @@ export default class FeedController {
    * 피드 생성
    */
   public createFeed: RequestHandler = async (req: Request, res: Response) => {
-    const imageFile = req.file?.filename;
+    const files = req.files as Express.MulterS3.File[];
     const { content } = req.body;
     const { userId, beachId } = req.params;
 
+    // console.log(req.files);
+    const image = files.map((file) => file.location);
+    console.log(image);
+
     try {
-      const feed = await this.feedService.createFeed(Number(userId), Number(beachId), content, imageFile);
+      const feed = await this.feedService.createFeed(Number(userId), Number(beachId), content, image);
       res.status(STATUS_CODE.SUCCESS.CREATED).json({ file: feed });
     } catch (error) {
       console.log(error);

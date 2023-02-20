@@ -30,7 +30,7 @@ export default class FeedService {
   /**
    * 해수욕장 피드 작성
    */
-  public async createFeed(userId: number, beachId: number, content: string, image?: string): Promise<Feed> {
+  public async createFeed(userId: number, beachId: number, content: string, image?: string[]): Promise<Feed> {
     const beach = await this.beachRepository.findOneByBeach(beachId);
 
     return await this.feedRepository.createFeedByBeachId(userId, beach.beachId, content, image);

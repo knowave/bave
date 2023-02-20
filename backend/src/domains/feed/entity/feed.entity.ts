@@ -25,7 +25,7 @@ export class Feed extends BaseEntity {
     comment: 'feed image',
     nullable: true,
   })
-  image!: string | null;
+  image!: string[] | null;
 
   @ManyToOne(() => Users, (user) => user.feedList)
   @JoinColumn({ name: 'user_id', referencedColumnName: 'userId' })

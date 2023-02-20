@@ -51,7 +51,7 @@ export default class FeedRepository {
   /**
    * 피드 작성
    */
-  public async createFeedByBeachId(userId: number, beachId: number, content: string, image?: string): Promise<Feed> {
+  public async createFeedByBeachId(userId: number, beachId: number, content: string, image?: string[]): Promise<Feed> {
     const feed = this.feedRepository.create({
       content,
       beachId,
