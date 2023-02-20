@@ -45,9 +45,7 @@ export default class FeedController {
     const { content } = req.body;
     const { userId, beachId } = req.params;
 
-    // console.log(req.files);
     const image = files.map((file) => file.location);
-    console.log(image);
 
     try {
       const feed = await this.feedService.createFeed(Number(userId), Number(beachId), content, image);
