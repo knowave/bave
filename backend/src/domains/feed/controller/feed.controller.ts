@@ -43,7 +43,8 @@ export default class FeedController {
   public createFeed: RequestHandler = async (req: Request, res: Response) => {
     const files = req.files as Express.MulterS3.File[];
     const { content } = req.body;
-    const { userId, beachId } = req.params;
+    const { beachId } = req.params;
+    const userId = req.users?.userId;
 
     const image = files.map((file) => file.location);
 
