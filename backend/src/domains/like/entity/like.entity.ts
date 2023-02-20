@@ -3,6 +3,7 @@ import { BaseEntity } from '../../../base/base.entity';
 import { Users } from '../../user/entity/user.entity';
 import { Feed } from '../../feed/entity/feed.entity';
 import { Reply } from '../../reply/entity/reply.entity';
+import { Beach } from '../../beach/entity/beach.entity';
 
 @Entity('like')
 export class Like extends BaseEntity {
@@ -23,4 +24,8 @@ export class Like extends BaseEntity {
   @ManyToOne(() => Reply, (reply) => reply.likeList)
   @JoinColumn({ name: 'reply_id', referencedColumnName: 'replyId' })
   replyId: number;
+
+  @ManyToOne(() => Beach, (beach) => beach.likeList)
+  @JoinColumn({ name: 'beach_id', referencedColumnName: 'beachId' })
+  beachId: number;
 }
