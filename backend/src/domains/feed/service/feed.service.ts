@@ -17,7 +17,8 @@ export default class FeedService {
    * 해수욕장 피드 전체 조회
    */
   public async getAllFeed(query: any, beachId: number): Promise<Feed[]> {
-    return await this.feedRepository.getAllFeed(query, beachId);
+    const beach = await this.beachRepository.findOneByBeach(beachId);
+    return await this.feedRepository.getAllFeed(query, beach.beachId);
   }
 
   /**
