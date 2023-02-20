@@ -4,6 +4,7 @@ import UserRouter from '../domains/user/router/user.router';
 import AuthRouter from '../domains/auth/router/auth.router';
 import FeedRouter from '../domains/feed/router/feed.router';
 import ReplyRouter from '../domains/reply/router/reply.router';
+import LikeRouter from '../domains/like/router/like.router';
 
 class Routes {
   private router;
@@ -16,6 +17,7 @@ class Routes {
     this.router.use('/auth', AuthRouter);
     this.router.use('/feed', FeedRouter);
     this.router.use('/reply', ReplyRouter);
+    this.router.use('/like', LikeRouter);
     return this.router;
   }
 }
