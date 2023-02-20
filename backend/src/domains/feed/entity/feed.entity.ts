@@ -35,7 +35,7 @@ export class Feed extends BaseEntity {
   @JoinColumn({ name: 'beach_id', referencedColumnName: 'beachId' })
   beachId: number;
 
-  @OneToMany(() => Reply, (reply) => reply.feed)
+  @OneToMany(() => Reply, (reply) => reply.feedId)
   @JoinColumn({ name: 'reply_id', referencedColumnName: 'replyId' })
   replyList: Reply[];
 
