@@ -15,7 +15,7 @@ class BookmarkRouter {
     this.bookmarkRouter = Router() as Router;
   }
 
-  likeMainRouter(): Router {
+  bookmarkMainRouter(): Router {
     this.bookmarkRouter.post('/feed/:feedId', authCheck, userMiddleware, this.bookmarkController.bookmarkByFeed);
     this.bookmarkRouter.post('/reply/:replyId', authCheck, userMiddleware, this.bookmarkController.bookmarkByReply);
     this.bookmarkRouter.post('/beach/:beachId', authCheck, userMiddleware, this.bookmarkController.bookmarkByBeach);
@@ -23,4 +23,4 @@ class BookmarkRouter {
   }
 }
 
-export default new BookmarkRouter().likeMainRouter();
+export default new BookmarkRouter().bookmarkMainRouter();
