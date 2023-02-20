@@ -3,7 +3,7 @@ import { BaseEntity } from '../base/base.entity';
 import { User } from './user.entity';
 import { Feed } from './feed.entity';
 
-@Entity('like')
+@Entity('bookmark')
 export class Like extends BaseEntity {
   @PrimaryGeneratedColumn({
     name: 'like_id',
