@@ -31,4 +31,11 @@ export default class ReplyService {
 
     return this.replyRepository.createReplyByFeed(user.userId, feed.feedId, contents);
   }
+
+  /**
+   * 특정 피드 댓글 수정
+   */
+  public async updateReplyByFeed(replyId: number, contents: string) {
+    return await this.replyRepository.updateReplyByFeed(replyId, contents);
+  }
 }

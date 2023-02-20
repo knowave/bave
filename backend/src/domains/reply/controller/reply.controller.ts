@@ -35,4 +35,20 @@ export default class ReplyController {
       res.status(STATUS_CODE.ERROR.BAD_REQUEST).send({ errorMessage: error });
     }
   };
+
+  /**
+   * 특정 피드 댓글 수정
+   */
+  public updateReplyByFeed: RequestHandler = async (req: Request, res: Response) => {
+    const { replyId } = req.params;
+    const { contents } = req.body;
+
+    try {
+      const reply = await this.replyService.updateReplyByFeed(Number(replyId), contents);
+      res.status(STATUS_CODE.SUCCESS.OK).json({ data: reply });
+    } catch (error) {
+      console.log('특정 피드 댓글 수정 Error: ', error);
+      res.status(STATUS_CODE.ERROR.BAD_REQUEST).send({ errorMessage: error });
+    }
+  };
 }

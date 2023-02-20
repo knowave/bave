@@ -46,4 +46,17 @@ export default class ReplyRepository {
 
     return await this.replyRepository.save(reply);
   }
+
+  /**
+   * 특정 피드 댓글 수정
+   */
+  public async updateReplyByFeed(replyId: number, contents: string) {
+    const reply = await this.replyRepository.findOne({ where: { replyId } });
+
+    if (!reply) {
+      throw REPLY_EXCEPTION.NOT_FOUND_REPLY;
+    }
+
+    return await this.replyRepository.update(reply.replyId, { contents });
+  }
 }
