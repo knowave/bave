@@ -38,3 +38,10 @@ export const FEED_EXCEPTION = {
     message: '피드를 찾을 수 없습니다.',
   },
 };
+
+export const REPLY_EXCEPTION = {
+  NOT_FOUND_REPLY: {
+    code: 'NOT_FOUND_REPLIES',
+    message: '댓글을 불러올 수 없습니다.',
+  },
+};
