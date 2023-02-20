@@ -38,4 +38,11 @@ export default class ReplyService {
   public async updateReplyByFeed(replyId: number, contents: string) {
     return await this.replyRepository.updateReplyByFeed(replyId, contents);
   }
+
+  /**
+   * 특정 피드 댓글 삭제
+   */
+  public async deleteReplyByFeed(replyId: number) {
+    return await this.replyRepository.deleteReplyByFeed(replyId);
+  }
 }

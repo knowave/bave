@@ -18,6 +18,7 @@ class ReplyRouter {
     this.replyRouter.get('/:feedId', this.replyController.getAllReplyByFeed);
     this.replyRouter.post('/:userId/:feedId', authCheck, this.replyController.createReplyByFeed);
     this.replyRouter.patch('/:replyId', authCheck, this.replyController.updateReplyByFeed);
+    this.replyRouter.delete('/:replyId', authCheck, this.replyController.deleteReplyByFeed);
     return this.replyRouter;
   }
 }

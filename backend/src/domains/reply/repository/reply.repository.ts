@@ -35,6 +35,19 @@ export default class ReplyRepository {
   }
 
   /**
+   * 특정 피드 댓글 상세 조회
+   */
+  private async findOneByReply(replyId: number): Promise<Reply> {
+    const reply = await this.replyRepository.findOne({ where: { replyId } });
+
+    if (!reply) {
+      throw REPLY_EXCEPTION.NOT_FOUND_REPLY;
+    }
+
+    return reply;
+  }
+
+  /**
    * 특정 피드에 댓글 작성
    */
   public async createReplyByFeed(userId: number, feedId: number, contents: string): Promise<Reply> {
@@ -51,12 +64,25 @@ export default class ReplyRepository {
    * 특정 피드 댓글 수정
    */
   public async updateReplyByFeed(replyId: number, contents: string) {
-    const reply = await this.replyRepository.findOne({ where: { replyId } });
+    const reply = await this.findOneByReply(replyId);
 
     if (!reply) {
       throw REPLY_EXCEPTION.NOT_FOUND_REPLY;
     }
 
     return await this.replyRepository.update(reply.replyId, { contents });
+  }
+
+  /**
+   * 특정 피드 댓글 삭제
+   */
+  public async deleteReplyByFeed(replyId: number) {
+    const reply = await this.findOneByReply(replyId);
+
+    if (!reply) {
+      throw REPLY_EXCEPTION.NOT_FOUND_REPLY;
+    }
+
+    return await this.replyRepository.delete(reply.replyId);
   }
 }

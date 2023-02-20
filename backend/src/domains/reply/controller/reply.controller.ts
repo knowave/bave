@@ -51,4 +51,19 @@ export default class ReplyController {
       res.status(STATUS_CODE.ERROR.BAD_REQUEST).send({ errorMessage: error });
     }
   };
+
+  /**
+   * 특정 피드 댓글 삭제
+   */
+  public deleteReplyByFeed: RequestHandler = async (req: Request, res: Response) => {
+    const { replyId } = req.params;
+
+    try {
+      const reply = await this.replyService.deleteReplyByFeed(Number(replyId));
+      res.status(STATUS_CODE.SUCCESS.OK).json({ data: reply });
+    } catch (error) {
+      console.log('특정 피드 댓글 삭제 Error: ', error);
+      res.status(STATUS_CODE.ERROR.BAD_REQUEST).send({ errorMessage: error });
+    }
+  };
 }
