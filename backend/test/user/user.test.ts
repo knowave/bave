@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
 import Client from '../client';
-import assert from 'assert';
+import * as assert from 'assert';
 import { STATUS_CODE } from '../../src/exception/status-code';
 
 describe('User 관련 API 테스트', function () {

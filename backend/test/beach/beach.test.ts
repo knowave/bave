@@ -1,6 +1,6 @@
 import Client from '../client';
 import { STATUS_CODE } from '../../src/exception/status-code';
-import assert from 'assert';
+import * as assert from 'assert';
 
 describe('해수욕장 API 테스트', function () {
   let beach: any;

@@ -1,6 +1,6 @@
-import dotenv from 'dotenv';
-import request from 'supertest';
-import express from 'express';
+import * as dotenv from 'dotenv';
+import * as request from 'supertest';
+import * as express from 'express';
 import { faker } from '@faker-js/faker';
 
 dotenv.config();
@@ -22,7 +22,7 @@ export default class Client {
    * 회원가입
    */
   async signUp(userId = faker.internet.userName(), data?: string) {
-    const signUpUrl = `${host}/sign-up`;
+    const signUpUrl = `${host}/auth/sign-in`;
 
     let response = await request(this.app).get(`${signUpUrl}`);
     const userAccessToken = response.body.accessToken;
