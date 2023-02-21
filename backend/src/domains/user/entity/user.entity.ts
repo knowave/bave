@@ -4,6 +4,7 @@ import { Bookmark } from '../../bookmark/entity/bookmark.entity';
 import * as bcrypt from 'bcrypt';
 import { Reply } from '../../reply/entity/reply.entity';
 import { Feed } from '../../feed/entity/feed.entity';
+import { Like } from '../../like/entity/like.entity';
 
 @Entity('users')
 export class Users extends BaseEntity {
@@ -44,9 +45,13 @@ export class Users extends BaseEntity {
   })
   jwtToken!: string | null;
 
-  @OneToMany(() => Bookmark, (like) => like.userId)
-  @JoinColumn({ name: 'like_id', referencedColumnName: 'like_id' })
+  @OneToMany(() => Bookmark, (bookmark) => bookmark.userId)
+  @JoinColumn({ name: 'bookmark_id', referencedColumnName: 'bookmarkId' })
   bookmarkList: Bookmark[];
+
+  @OneToMany(() => Like, (like) => like.userId)
+  @JoinColumn({ name: 'like_id', referencedColumnName: 'likeId' })
+  likeId: number;
 
   @OneToMany(() => Reply, (reply) => reply.userId)
   @JoinColumn({ name: 'reply_id', referencedColumnName: 'replyId' })

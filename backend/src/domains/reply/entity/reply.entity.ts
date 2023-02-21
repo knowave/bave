@@ -3,6 +3,7 @@ import { BaseEntity } from '../../../base/base.entity';
 import { Users } from '../../user/entity/user.entity';
 import { Feed } from '../../feed/entity/feed.entity';
 import { Bookmark } from '../../bookmark/entity/bookmark.entity';
+import { Like } from '../../like/entity/like.entity';
 
 @Entity()
 export class Reply extends BaseEntity {
@@ -27,7 +28,7 @@ export class Reply extends BaseEntity {
   @JoinColumn({ name: 'feed_id', referencedColumnName: 'feedId' })
   feedId: number;
 
-  @OneToMany(() => Bookmark, (like) => like.replyId)
+  @OneToMany(() => Like, (like) => like.replyId)
   @JoinColumn({ name: 'like_id', referencedColumnName: 'likeId' })
-  bookmarkList: Bookmark[];
+  likeId: number;
 }

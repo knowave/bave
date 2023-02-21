@@ -2,6 +2,7 @@ import { Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn } from 't
 import { BaseEntity } from '../../../base/base.entity';
 import { Feed } from '../../feed/entity/feed.entity';
 import { Bookmark } from '../../bookmark/entity/bookmark.entity';
+import { Like } from '../../like/entity/like.entity';
 
 @Entity('beach')
 export class Beach extends BaseEntity {
@@ -50,7 +51,11 @@ export class Beach extends BaseEntity {
   @JoinColumn({ name: 'feed_id', referencedColumnName: 'feedId' })
   feedList: Feed[];
 
-  @OneToMany(() => Bookmark, (like) => like.beachId)
-  @JoinColumn({ name: 'like_id', referencedColumnName: 'likeId' })
+  @OneToMany(() => Bookmark, (bookmark) => bookmark.beachId)
+  @JoinColumn({ name: 'bookmark_id', referencedColumnName: 'bookmarkId' })
   bookmarkList: Bookmark[];
+
+  @OneToMany(() => Like, (like) => like.beachId)
+  @JoinColumn({ name: 'like_id', referencedColumnName: 'likeId' })
+  likeId: number;
 }

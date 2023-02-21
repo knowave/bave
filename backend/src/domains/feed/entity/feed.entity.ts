@@ -4,6 +4,7 @@ import { Users } from '../../user/entity/user.entity';
 import { Reply } from '../../reply/entity/reply.entity';
 import { Bookmark } from '../../bookmark/entity/bookmark.entity';
 import { Beach } from '../../beach/entity/beach.entity';
+import { Like } from '../../like/entity/like.entity';
 
 @Entity()
 export class Feed extends BaseEntity {
@@ -39,7 +40,11 @@ export class Feed extends BaseEntity {
   @JoinColumn({ name: 'reply_id', referencedColumnName: 'replyId' })
   replyList: Reply[];
 
-  @OneToMany(() => Bookmark, (like) => like.feedId)
-  @JoinColumn({ name: 'like_id', referencedColumnName: 'likeId' })
+  @OneToMany(() => Bookmark, (bookmark) => bookmark.feedId)
+  @JoinColumn({ name: 'bookmark_id', referencedColumnName: 'bookmarkId' })
   bookmarkList: Bookmark[];
+
+  @OneToMany(() => Like, (like) => like.feedId)
+  @JoinColumn({ name: 'like_id', referencedColumnName: 'likeId' })
+  likeId: number;
 }
