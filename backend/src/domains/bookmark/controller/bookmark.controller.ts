@@ -13,9 +13,9 @@ export default class BookmarkController {
     const userId = req.users?.userId;
 
     try {
-      const like = await this.bookmarkService.findOneByBookmark(Number(userId), Number(feedId));
+      const bookmark = await this.bookmarkService.findOneByBookmark(Number(userId), Number(feedId));
 
-      if (!like) {
+      if (!bookmark) {
         await this.bookmarkService.createBookmarkByFeed(Number(userId), Number(feedId));
         res.status(STATUS_CODE.SUCCESS.CREATED).json({ data: true });
       } else {
@@ -36,9 +36,9 @@ export default class BookmarkController {
     const userId = req.users?.userId;
 
     try {
-      const like = await this.bookmarkService.findOneBookmarkByBeach(Number(userId), Number(beachId));
+      const bookmark = await this.bookmarkService.findOneBookmarkByBeach(Number(userId), Number(beachId));
 
-      if (!like) {
+      if (!bookmark) {
         await this.bookmarkService.createBookmarkByBeach(Number(userId), Number(beachId));
         res.status(STATUS_CODE.SUCCESS.CREATED).json({ data: true });
       } else {
