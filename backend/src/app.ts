@@ -50,10 +50,6 @@ export default class App {
       });
   }
 
-  public apiRouter() {
-    this.app.use;
-  }
-
   public listen() {
     this.app.listen(this.port, () => {
       console.log(`🎉 Connected Server http://localhost:${this.port}`);
