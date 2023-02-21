@@ -1,8 +1,9 @@
 import { Repository } from 'typeorm';
 import connectionOptions from '../../../database/type-orm.config';
 import { Like } from '../entity/like.entity';
+import { Bookmark } from '../../bookmark/entity/bookmark.entity';
 
-export default class ReplyLikeRepository {
+export default class BeachLikeRepository {
   private beachLikeRepository: Repository<Like>;
 
   constructor() {
@@ -12,14 +13,14 @@ export default class ReplyLikeRepository {
   /**
    * 해수욕장 좋아요 조회
    */
-  public async findOneLikeByFeed(userId: number, beachId: number): Promise<Like | null> {
+  public async findOneLikeByBeach(userId: number, beachId: number): Promise<Like | null> {
     return await this.beachLikeRepository.findOne({ where: { userId, beachId } });
   }
 
   /**
    * 해수욕장 좋아요
    */
-  public async createLikeByFeed(userId: number, beachId: number): Promise<Like> {
+  public async createLikeByBeach(userId: number, beachId: number): Promise<Like> {
     const createLike = await this.beachLikeRepository.create({
       userId,
       beachId,
@@ -31,7 +32,7 @@ export default class ReplyLikeRepository {
   /**
    * 해수욕장 좋아요 취소
    */
-  public async cancelLikeByFeed(userId: number, beachId: number) {
+  public async cancelLikeByBeach(userId: number, beachId: number) {
     return await this.beachLikeRepository.delete({ userId, beachId });
   }
 }

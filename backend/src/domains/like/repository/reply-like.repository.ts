@@ -10,6 +10,13 @@ export default class ReplyLikeRepository {
   }
 
   /**
+   * 댓글 좋아요 조회
+   */
+  public async findOneLikeByReply(userId: number, replyId: number): Promise<Like | null> {
+    return await this.replyLikeRepository.findOne({ where: { userId, replyId } });
+  }
+
+  /**
    * 댓글 좋아요
    */
   public async createLikeByReply(userId: number, replyId: number): Promise<Like> {

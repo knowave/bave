@@ -5,6 +5,7 @@ import { Beach } from '../domains/beach/entity/beach.entity';
 import { Feed } from '../domains/feed/entity/feed.entity';
 import { Reply } from '../domains/reply/entity/reply.entity';
 import { Bookmark } from '../domains/bookmark/entity/bookmark.entity';
+import { Like } from '../domains/like/entity/like.entity';
 
 dotenv.config();
 export const connectionOptions = new DataSource({
@@ -16,7 +17,7 @@ export const connectionOptions = new DataSource({
   database: process.env.DB_NAME,
   synchronize: true,
   logging: false,
-  entities: [Users, Beach, Feed, Reply, Bookmark],
+  entities: [Users, Beach, Feed, Reply, Bookmark, Like],
 });
 
 export default connectionOptions;

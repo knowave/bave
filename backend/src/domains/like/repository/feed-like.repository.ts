@@ -1,12 +1,20 @@
 import { Repository } from 'typeorm';
 import { Like } from '../entity/like.entity';
 import connectionOptions from '../../../database/type-orm.config';
+import { Bookmark } from '../../bookmark/entity/bookmark.entity';
 
 export default class FeedLikeRepository {
   private feedLikeRepository: Repository<Like>;
 
   constructor() {
     this.feedLikeRepository = connectionOptions.getRepository(Like);
+  }
+
+  /**
+   * 피드 좋아요 조회
+   */
+  public async findOneLikeByFeed(userId: number, feedId: number): Promise<Like | null> {
+    return await this.feedLikeRepository.findOne({ where: { userId, feedId } });
   }
 
   /**
