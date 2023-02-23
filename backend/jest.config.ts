@@ -6,5 +6,5 @@ export default {
   },
   transformIgnorePatterns: ['<rootDir>/node_modules/'],
   modulePathIgnorePatterns: ['<rootDir>/dist/'],
-  globalSetup: '<rootDir>/.env/',
+  // globalSetup: '<rootDir>/.env/',
 };

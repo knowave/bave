@@ -14,7 +14,7 @@
     "strict": true,                                      /* Enable all strict type-checking options. */
     "strictPropertyInitialization": false,             /* Check for class properties that are declared but not set in the constructor. */
     "skipLibCheck": true,                                 /* Skip type checking all .d.ts files. */
-    "typeRoots": ["node_modules/@types", "src/types"]
+    "typeRoots": ["node_modules/@types", "src/types"],
   },
   "include": ["src/**/*"]
 }

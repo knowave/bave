@@ -1,6 +1,7 @@
 import Client from '../client';
 import { STATUS_CODE } from '../../src/exception/status-code';
 import * as assert from 'assert';
+import { before } from 'node:test';
 
 describe('해수욕장 API 테스트', function () {
   let beach: any;
@@ -17,7 +18,8 @@ describe('해수욕장 API 테스트', function () {
 
   describe('성공', function () {
     before(async () => {
-      client = await Client.getInstance();
+      // client = await Client.getInstance();
+      client = new Client();
       beach = await client.getAllBeach();
       feed = await client.createFeedByBeachId();
       reply = await client.createReplyByBeachId();

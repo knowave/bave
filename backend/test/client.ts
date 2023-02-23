@@ -1,7 +1,7 @@
 import * as dotenv from 'dotenv';
 import * as request from 'supertest';
-import * as express from 'express';
 import { faker } from '@faker-js/faker';
+import App from '../src/app';
 
 dotenv.config();
 
@@ -10,7 +10,7 @@ const host = process.env.HOST;
 export default class Client {
   public userId = '';
   public jwt = { accessToken: '', refreshToken: '' };
-  public app = express();
+  public app = App;
 
   static async getInstance() {
     const client = new Client();
