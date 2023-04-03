@@ -16,7 +16,7 @@
 
 ## ERD
 
-![스크린샷 2023-02-16 오후 5.00.46.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ed62e811-5842-4caa-9d8b-5ccb5d172fc8/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-02-16_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_5.00.46.png)
+![스크린샷 2023-02-16 오후 5.00.46.png](https://file.notion.so/f/s/ed62e811-5842-4caa-9d8b-5ccb5d172fc8/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-02-16_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_5.00.46.png?id=abc365a9-b657-4c6a-9741-1e990aa50a51&table=block&spaceId=053b970c-3416-464d-9bb2-f3c9b9bc701a&expirationTimestamp=1680593638572&signature=S1_Dq508TnfOOw1zyDeAxnuGLeoDpvyb1eebfIu2rW4&downloadName=%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA+2023-02-16+%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE+5.00.46.png)
 
 ---
 
