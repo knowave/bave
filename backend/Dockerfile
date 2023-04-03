@@ -1,8 +1,12 @@
 FROM node:16-alpine3.11
 
+RUN mkdir -p /app
+
 WORKDIR /app
 
-COPY package.json yarn.lock ./
+COPY package.json .
+
+COPY yarn.lock .
 
 RUN yarn install
 
@@ -10,9 +14,7 @@ COPY . .
 
 RUN yarn build
 
-COPY .env ./dist/
-
-WORKDIR ./dist
+COPY .env .
 
 EXPOSE 8080
 
