@@ -20,21 +20,20 @@
 
 ---
 
-## Tech Stack
+## Skill Stack
 
 ---
 
-| Tech    | Description                                | Version |
-| ------- | ------------------------------------------ | ------- |
-| Express | Node.js Framework.                         | 4.18.2  |
-| Mysql2  | 참조관계가 많은 데이터 특성 상 MySQL 사용. | 2.3.3   |
-| CORS    | Request Resource 제한                      |         |
-| Swagger | API 문서화                                 |         |
-| AWS-CDK | S3를 사용해서 image를 담기 위함            |         |
-| xml-js  | xml to json                                |         |
-| dotenv  | DB 및 여러 key 정보 유출 방지              | 16.0.3  |
-| TypeORM | DataBase ORM 사용                          |         |
-| mocha   | Test Code                                  |         |
+| skill   | Description                                | Version  |
+| ------- | ------------------------------------------ | -------- |
+| Express | Node.js Framework.                         | 4.18.2   |
+| Mysql2  | 참조관계가 많은 데이터 특성 상 MySQL 사용. | 2.3.3    |
+| Swagger | API 문서화                                 | 4.6.0    |
+| AWS-CDK | S3를 사용해서 image를 담기 위함            | 2.1313.0 |
+| xml-js  | xml to json                                | 1.6.11   |
+| dotenv  | DB 및 여러 key 정보 유출 방지              | 16.0.3   |
+| TypeORM | DataBase ORM 사용                          | 0.3.11   |
+| Jest    | Test Code                                  | 29.4.3   |
 
 ## Feature
 
