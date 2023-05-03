@@ -2,7 +2,6 @@ import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColum
 import { BaseEntity } from '../../../base/base.entity';
 import { Users } from '../../user/entity/user.entity';
 import { Feed } from '../../feed/entity/feed.entity';
-import { Bookmark } from '../../bookmark/entity/bookmark.entity';
 import { Like } from '../../like/entity/like.entity';
 
 @Entity()

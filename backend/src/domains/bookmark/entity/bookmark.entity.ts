@@ -2,7 +2,6 @@ import { Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { BaseEntity } from '../../../base/base.entity';
 import { Users } from '../../user/entity/user.entity';
 import { Feed } from '../../feed/entity/feed.entity';
-import { Reply } from '../../reply/entity/reply.entity';
 import { Beach } from '../../beach/entity/beach.entity';
 
 @Entity('bookmark')
